@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://w3id.org/kg2026/schema/trajectory/1.0.0",
+  "title": "Ordered processing trajectory",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["trajectory_id", "run_id", "record_id", "contract_version", "steps"],
+  "properties": {
+    "trajectory_id": {"type": "string", "minLength": 1},
+    "run_id": {"type": "string", "minLength": 1},
+    "record_id": {"type": "string", "minLength": 1},
+    "contract_version": {"type": "string", "const": "1.0.0"},
+    "steps": {
+      "type": "array",
+      "minItems": 10,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["position", "stage", "mode"],
+        "properties": {
+          "position": {"type": "integer", "minimum": 1},
+          "stage": {"type": "string", "minLength": 1},
+          "mode": {"enum": ["executed", "retained-input", "fixture-adapter"]}
+        }
+      }
+    }
+  }
+}

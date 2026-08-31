@@ -1,0 +1,14 @@
+{
+  "policy_id": "AP-EMPLOYMENT-1",
+  "version": "1.0.0",
+  "decision_precedence": ["rejected", "conditional", "accepted"],
+  "rules": [
+    {"id": "R-INPUT-COMPLETE", "severity": "reject", "description": "ID, body, date, and source are required."},
+    {"id": "R-EVENT-TYPE", "severity": "reject", "description": "Event type must be job_gain, job_loss, no_event, or ambiguous."},
+    {"id": "R-JOB-COUNT", "severity": "reject", "description": "When present, job count must be a non-negative integer."},
+    {"id": "R-EVIDENCE", "severity": "conditional", "description": "Gain/loss assertions require a non-empty evidence span."},
+    {"id": "R-CONFIDENCE", "severity": "conditional", "description": "Gain/loss confidence must meet the run threshold."},
+    {"id": "R-PROVENANCE", "severity": "reject", "description": "The assertion must link to a generating activity and source entity."},
+    {"id": "R-TRAJECTORY", "severity": "reject", "description": "The assertion must link to the ordered trajectory and contract."}
+  ]
+}

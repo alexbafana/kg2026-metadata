@@ -1,19 +1,44 @@
-# Section VI evaluation protocol
+# Section VI evaluation package
 
-The public evidence index starts in a **pending** state. Populate it only after
-a controlled-access run completes and the proposed public artifact has passed
-rights/privacy review.
+This directory is organized around the claims made in Section VI of the paper,
+not around the accidental contents of the legacy repository.
 
-For each run, preserve in restricted storage: input manifest and hashes,
-versions/configuration, command log, per-item pipeline artifacts, provenance
-and trajectory records, RDF, validation report, and query output. Keep Run-0,
-Run-1, and Run-Var separate. Run-Var must change exactly one documented factor.
+## Evaluation object
 
-Public publication may report approved aggregate outcomes and integrity hashes.
-Use the scripts in `scripts/` inside the controlled environment. A validation
-script or query template is not evidence until it has completed successfully and
-its output is retained.
+The object under evaluation is a trajectory-aware, contract-governed
+NLP-to-RDF pipeline instantiated by the employment-event running case. The
+evaluation must test:
 
-The query templates in `queries/` avoid returning article body text, titles,
-entity values, or classifications. The executed aggregate audit and precise
-claim boundary are in `EXECUTED_AUDIT.md` and `evidence-status.json`.
+1. ordered and branch-aware trajectory metadata;
+2. repeatable execution and explainable controlled variation;
+3. a versioned transformation contract and transparent acceptance decisions;
+4. statement-level tracing from RDF to source evidence, processing steps,
+   model/configuration, contract, and decision; and
+5. compatibility with RDF, SPARQL, and PROV-O conventions.
+
+See [`protocol/CLAIM_EVIDENCE_MATRIX.md`](protocol/CLAIM_EVIDENCE_MATRIX.md)
+for the normative claim-to-evidence mapping.
+
+## Directory map
+
+| Path | Role |
+| --- | --- |
+| `protocol/` | Fixed evaluation design, selection rules, claims, metrics, and run definitions |
+| `contracts/v1/` | Versioned input/output schemas and acceptance policy |
+| `fixtures/public/` | Author-created synthetic smoke-test cases; never empirical paper evidence |
+| `harness/` | Executable evidence assembly, provenance, trajectory, validation, and comparison tools |
+| `queries/` | SPARQL competency and audit queries |
+| `baseline/` | Legacy corpus-level audit and limitations |
+| `results/public/` | Reviewed aggregate results only |
+| `scripts/` | Supporting validation and privacy utilities |
+
+Run-specific real evidence belongs in `evaluation/runs/`, which is ignored by
+Git and must remain controlled. Run-0, Run-1, and Run-Var are demonstrated only
+after their complete output directories exist and their commands succeed.
+
+## Status boundary
+
+The legacy RIOT/SPARQL audit is executed baseline evidence. The public fixture
+workflow is an exercisability test. Neither substitutes for the paper's real
+employment-event evaluation. Current demonstrated and pending claims are listed
+in [`evidence-status.json`](evidence-status.json).

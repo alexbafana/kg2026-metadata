@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://w3id.org/kg2026/schema/employment/1.0.0",
+  "title": "Employment event output",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["event_type", "job_count", "organization", "confidence", "evidence_text"],
+  "properties": {
+    "event_type": {"enum": ["job_gain", "job_loss", "no_event", "ambiguous"]},
+    "job_count": {"type": ["integer", "null"]},
+    "organization": {"type": ["string", "null"]},
+    "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+    "evidence_text": {"type": "string"}
+  }
+}

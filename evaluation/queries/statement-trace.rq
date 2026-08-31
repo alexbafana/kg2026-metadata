@@ -1,0 +1,21 @@
+PREFIX ex: <https://w3id.org/kg2026/schema/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX ver: <https://w3id.org/kg2026/version/>
+
+SELECT ?assertion ?source ?sourceHash ?run ?trajectory ?step ?position
+       ?model ?modelVersion ?contract ?decision ?outcome
+WHERE {
+  ?assertion a ex:EmploymentAssertion ;
+             prov:wasDerivedFrom ?source ;
+             prov:wasGeneratedBy ?run ;
+             ver:hasProcessingTrajectory ?trajectory ;
+             ex:governedBy ?contract ;
+             ex:validatedBy ?decision .
+  ?source ex:sha256 ?sourceHash .
+  ?run ex:usedModel ?model .
+  ?model <http://purl.org/dc/terms/hasVersion> ?modelVersion .
+  ?trajectory ex:hasStep ?step .
+  ?step ex:position ?position .
+  ?decision ex:outcome ?outcome .
+}
+ORDER BY ?assertion ?position

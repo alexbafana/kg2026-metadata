@@ -1,39 +1,50 @@
 {
   "as_of": "2026-08-31",
   "claim_rule": "demonstrated only when an artifact exists or a retained command completed successfully",
-  "restricted_pipeline_commit": "234fd2fdb94cf005345f87573b317598979617f9",
-  "source_inventory": {
-    "status": "demonstrated_locally_restricted",
-    "records": 162,
-    "rights_cleared": 0,
-    "public_metadata_approved": 0,
-    "verified_canonical_urls": 1
+  "paper_claims": {
+    "C1_explicit_prov_compatible_trajectory": {
+      "public_fixture": "demonstrated",
+      "real_evaluation": "pending"
+    },
+    "C2_repeatability": {
+      "public_fixture": "demonstrated_3_of_3_core_agreement",
+      "real_evaluation": "pending"
+    },
+    "C3_explainable_variation": {
+      "public_fixture": "demonstrated_1_of_1_difference_explained",
+      "real_evaluation": "pending"
+    },
+    "C4_contract_and_acceptance": {
+      "public_fixture": "demonstrated_all_outcome_paths_across_runs",
+      "real_evaluation": "pending"
+    },
+    "C5_statement_traceability": {
+      "public_fixture": "demonstrated_3_of_3_assertions",
+      "real_evaluation": "pending"
+    },
+    "C6_employment_running_case": {
+      "public_fixture": "smoke_test_only",
+      "real_evaluation": "blocked_missing_employment_focused_sample_and_executed_model_stage"
+    },
+    "C7_improved_traceability": {
+      "legacy_baseline": "demonstrated_0_of_162_generating_activity_and_trajectory_links",
+      "enhanced_real_evaluation": "pending"
+    }
+  },
+  "legacy_baseline": {
+    "restricted_pipeline_commit": "234fd2fdb94cf005345f87573b317598979617f9",
+    "riot": "demonstrated_162_pass_0_fail",
+    "complete_provenance_walkthroughs": 0
   },
   "controlled_access": {
     "status": "blocked",
     "reason": "authoritative institutional location and responsible data controller remain undesignated"
   },
-  "run_0": {"status": "pending"},
-  "run_1": {"status": "pending"},
-  "run_var": {"status": "pending"},
-  "riot_validation": {
-    "status": "demonstrated",
-    "engine": "Apache Jena RIOT 6.2.0",
-    "artifacts_passed": 162,
-    "artifacts_failed": 0
+  "real_runs": {
+    "run_0": "pending",
+    "run_1": "pending",
+    "run_var": "pending"
   },
-  "sparql_candidate_audit": {
-    "status": "demonstrated",
-    "engine": "Apache Jena ARQ 6.2.0",
-    "candidates": 3,
-    "complete_provenance_walkthroughs": 0
-  },
-  "fixed_release": {
-    "status": "pending",
-    "reason": "evidence runs, licence, controller, environment lock, and publication approval are incomplete"
-  },
-  "doi": {
-    "status": "pending",
-    "reason": "archive integration is not authenticated and no final release exists"
-  }
+  "fixed_release": "pending_real_evaluation_and_review",
+  "doi": "pending_final_release"
 }

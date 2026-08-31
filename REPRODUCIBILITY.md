@@ -20,6 +20,12 @@ lock, isolated per-run output directories, failure-propagating orchestration,
 and complete provenance/trajectory generation are implemented. Run-Var must
 change one recorded factor only.
 
+The claim-aligned harness now provides isolated output directories, explicit
+contract/version fields, ordered trajectories, PROV-linked RDF, and fail-fast
+acceptance reports. Its public fixture runs demonstrate that machinery only.
+They use recorded author-created fixture predictions and therefore do not
+demonstrate NLP or LLM execution.
+
 ## Executed RDF audit
 
 The retained public result reports only aggregate counts and corpus-level
@@ -35,6 +41,13 @@ artifact correspondence only. They do not establish complete source-to-RDF
 provenance because the retained RDF has no `prov:wasGeneratedBy` or
 `ver:hasProcessingTrajectory` links and the source inventory lacks verified
 retrieval records for most items. Detailed hashes remain restricted.
+
+## Claim-aligned protocol
+
+The authoritative evaluation requirements are in
+[`evaluation/protocol/CLAIM_EVIDENCE_MATRIX.md`](evaluation/protocol/CLAIM_EVIDENCE_MATRIX.md).
+The legacy 162-file audit is the before-state; the paper's empirical claims
+require the controlled real employment sample and genuine model runs.
 
 ## Release boundary
 

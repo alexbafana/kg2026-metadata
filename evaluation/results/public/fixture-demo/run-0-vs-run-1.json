@@ -1,0 +1,33 @@
+{
+  "core_identical_count": 3,
+  "decision_identical_count": 3,
+  "left_run": "fixture-run-0",
+  "record_count": 3,
+  "records": [
+    {
+      "changed_fields": [],
+      "core_identical": true,
+      "decision_identical": true,
+      "left_decision": "accepted",
+      "record_id": "synthetic_gain_01",
+      "right_decision": "accepted"
+    },
+    {
+      "changed_fields": [],
+      "core_identical": true,
+      "decision_identical": true,
+      "left_decision": "rejected",
+      "record_id": "synthetic_invalid_01",
+      "right_decision": "rejected"
+    },
+    {
+      "changed_fields": [],
+      "core_identical": true,
+      "decision_identical": true,
+      "left_decision": "accepted",
+      "record_id": "synthetic_loss_01",
+      "right_decision": "accepted"
+    }
+  ],
+  "right_run": "fixture-run-1"
+}

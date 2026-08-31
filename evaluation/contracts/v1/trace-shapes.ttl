@@ -1,0 +1,36 @@
+@prefix ex: <https://w3id.org/kg2026/schema/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix ver: <https://w3id.org/kg2026/version/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ex:EmploymentAssertionShape a sh:NodeShape ;
+    sh:targetClass ex:EmploymentAssertion ;
+    sh:property [ sh:path prov:wasDerivedFrom ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path prov:wasGeneratedBy ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path ver:hasProcessingTrajectory ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path ex:governedBy ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path ex:validatedBy ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path ex:employmentEvent ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path ex:confidence ; sh:minCount 1 ; sh:maxCount 1 ; sh:minInclusive 0 ; sh:maxInclusive 1 ] .
+
+ex:TrajectoryShape a sh:NodeShape ;
+    sh:targetClass ex:ProcessingTrajectory ;
+    sh:property [ sh:path ex:run ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path ex:hasStep ; sh:minCount 10 ; sh:maxCount 10 ] ;
+    sh:property [ sh:path ex:branchTaken ; sh:minCount 1 ; sh:maxCount 1 ] .
+
+ex:StepShape a sh:NodeShape ;
+    sh:targetClass ex:ProcessingStep ;
+    sh:property [ sh:path ex:position ; sh:minCount 1 ; sh:maxCount 1 ; sh:minInclusive 1 ; sh:maxInclusive 10 ] ;
+    sh:property [ sh:path ex:stage ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path ex:mode ; sh:minCount 1 ; sh:maxCount 1 ] .
+
+ex:DecisionShape a sh:NodeShape ;
+    sh:targetClass ex:AcceptanceDecision ;
+    sh:property [
+        sh:path ex:outcome ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:in ("accepted" "conditional" "rejected")
+    ] .

@@ -1,0 +1,8 @@
+{
+  "run_id": "fixture-run-0",
+  "run_type": "run-0",
+  "contract_version": "1.0.0",
+  "employment_confidence_threshold": 0.70,
+  "model": {"name": "fixture-adapter", "version": "1.0.0", "prompt_version": "fixture-1"},
+  "stage_mode": "fixture-adapter"
+}

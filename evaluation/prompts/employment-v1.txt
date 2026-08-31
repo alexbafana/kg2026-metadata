@@ -1,0 +1,16 @@
+You are classifying one Estonian-language article for a research evaluation.
+
+Return one JSON object and no surrounding prose. Use exactly these fields:
+
+- event_type: one of job_gain, job_loss, no_event, ambiguous
+- job_count: a non-negative integer only when explicitly supported, otherwise null
+- organization: the employing organization when supported, otherwise null
+- confidence: a number from 0 to 1
+- evidence_text: the shortest exact source substring supporting the decision
+
+Do not infer a job count from money, percentages, total workforce, or planned
+investment. Use ambiguous when gain and loss conflict or the direction cannot be
+resolved. Use no_event when the article does not report an employment change.
+
+INPUT_JSON:
+{{article_json}}

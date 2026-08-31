@@ -13,6 +13,7 @@ restricted source material**.
   results after they are reviewed for publication; and
 - controlled re-execution by authorised reviewers who have approved access to
   the source corpus and model assets.
+- public execution of a synthetic contract/trajectory/acceptance smoke test.
 
 It does not provide open-data replication. The full evidence package is held
 outside GitHub under the process in [DATA_ACCESS.md](DATA_ACCESS.md).
@@ -21,9 +22,13 @@ outside GitHub under the process in [DATA_ACCESS.md](DATA_ACCESS.md).
 
 | Path | Purpose |
 | --- | --- |
-| `pipeline/` | Legacy pipeline source retained for methodological review. |
+| `pipeline/` | Legacy pipeline source retained as baseline material; not the Section VI executor. |
 | `metadata/` | Empty, schema-led public manifest templates; add only approved metadata. |
-| `evaluation/` | Validation/query helpers and Section VI evidence protocol. |
+| `evaluation/protocol/` | Normative claim-to-evidence matrix and fixed experimental design. |
+| `evaluation/contracts/v1/` | Versioned transformation and acceptance contract. |
+| `evaluation/harness/` | Evidence, provenance, trajectory, RDF, acceptance, and comparison tools. |
+| `evaluation/fixtures/public/` | Author-created exercisability cases. |
+| `evaluation/results/public/` | Synthetic results and reviewed real aggregates only. |
 | `DATA_ACCESS.md` | Controlled-access and reviewer procedure. |
 | `REPRODUCIBILITY.md` | Executed/pending boundary and reproducibility limitations. |
 | `SECURITY.md` | Publication boundary and release checks. |
@@ -32,16 +37,28 @@ outside GitHub under the process in [DATA_ACCESS.md](DATA_ACCESS.md).
 
 Evidence is **demonstrated** only where the actual reviewed artifact and a
 successful execution record are available. This repository currently supplies
-the protocol, tooling, and a reviewed aggregate RDF syntax/query audit. It does
-not claim a completed Run-0/Run-1/Run-Var evaluation.
+the claim-aligned protocol, versioned contract, an executable public fixture
+workflow, and a reviewed aggregate legacy RDF audit. It does not claim that the
+real employment-event Run-0/Run-1/Run-Var evaluation is complete.
+
+## Five-minute public check
+
+```bash
+python3 evaluation/harness/run_evaluation.py \
+  --dataset evaluation/fixtures/public/articles.csv \
+  --predictions evaluation/fixtures/public/predictions.json \
+  --config evaluation/fixtures/public/run-0.config.json \
+  --output /tmp/kg2026-fixture-run-0
+```
+
+The author-created fixture is a smoke test, not evidence about real news or
+model accuracy.
 
 ## Controlled execution
 
-The scripts require approved source data and assets that are deliberately not
-in this repository. In a controlled environment, install
-`pipeline/requirements.txt`, supply the approved assets, set `OPENAI_API_KEY`
-only in the environment, and record exact versions, command line, input/output
-hashes, and validation results. See [DATA_ACCESS.md](DATA_ACCESS.md).
+The real experiment requires a frozen employment-focused sample and a genuinely
+executed, version-pinned employment classifier. Those assets are deliberately
+not substituted by the public fixtures. See [DATA_ACCESS.md](DATA_ACCESS.md).
 
 Before adding public metadata, validate each row against
 [`metadata/article-manifest-schema.json`](metadata/article-manifest-schema.json)

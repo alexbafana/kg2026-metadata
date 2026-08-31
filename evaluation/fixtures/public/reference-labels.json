@@ -1,0 +1,5 @@
+{
+  "synthetic_gain_01": {"event_type": "job_gain", "job_count": 25, "expected_decision_run_0": "accepted"},
+  "synthetic_loss_01": {"event_type": "job_loss", "job_count": 12, "expected_decision_run_0": "accepted"},
+  "synthetic_invalid_01": {"event_type": "job_gain", "job_count": 5, "expected_decision_run_0": "rejected"}
+}

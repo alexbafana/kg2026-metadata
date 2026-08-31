@@ -1,0 +1,4 @@
+id,title,body,date,source
+synthetic_gain_01,Näidistehas loob töökohti,Näidistehas avab Tartus uue tootmisüksuse ja loob 25 töökohta.,2026-01-10,author-created
+synthetic_loss_01,Näidisfirma sulgeb üksuse,Näidisfirma sulgeb Pärnu üksuse ning kaob 12 töökohta.,2026-01-11,author-created
+synthetic_invalid_01,Näidisettevõte kavandab värbamist,Näidisettevõte teatas et loob järgmisel aastal viis töökohta.,2026-01-12,author-created

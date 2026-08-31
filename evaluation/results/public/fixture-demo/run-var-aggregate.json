@@ -1,0 +1,38 @@
+{
+  "decisions": {
+    "accepted": 1,
+    "conditional": 1,
+    "rejected": 1
+  },
+  "per_record": [
+    {
+      "acceptance_decision": "accepted",
+      "core_sha256": "150b8ecf6cf330d21f8905aedc5cd1e5eeedbfceb47b967d050f20d58f20cc2c",
+      "emtak_code": "C",
+      "event_type": "job_gain",
+      "job_count": 25,
+      "organization": "Näidistehas",
+      "record_id": "synthetic_gain_01"
+    },
+    {
+      "acceptance_decision": "conditional",
+      "core_sha256": "2582baebb8867d21c971a0c3902abdaf9551adaccc09b0078ef4d3a0bccdc2a5",
+      "emtak_code": "C",
+      "event_type": "job_loss",
+      "job_count": 12,
+      "organization": "Näidisfirma",
+      "record_id": "synthetic_loss_01"
+    },
+    {
+      "acceptance_decision": "rejected",
+      "core_sha256": "89c4b9c387b5762bddc4cc2d6038782ae5200e81bb11590b9a39eaf07596aad1",
+      "emtak_code": "N",
+      "event_type": "job_gain",
+      "job_count": -1,
+      "organization": "Näidisettevõte",
+      "record_id": "synthetic_invalid_01"
+    }
+  ],
+  "record_count": 3,
+  "run_id": "fixture-run-var"
+}

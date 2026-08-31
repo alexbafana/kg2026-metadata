@@ -1,0 +1,20 @@
+{
+  "synthetic_gain_01": {
+    "nlp": {"lemmas": ["avama", "tootmisüksus", "looma", "töökoht"], "keywords": ["tootmisüksus", "töökoht"]},
+    "ner": {"entities": [{"text": "Näidistehas", "type": "Organization"}, {"text": "Tartu", "type": "Location"}]},
+    "employment": {"event_type": "job_gain", "job_count": 25, "organization": "Näidistehas", "confidence": 0.96, "evidence_text": "loob 25 töökohta"},
+    "emtak": {"code": "C", "label": "Manufacturing", "confidence": 0.91}
+  },
+  "synthetic_loss_01": {
+    "nlp": {"lemmas": ["sulgema", "üksus", "kaduma", "töökoht"], "keywords": ["sulgemine", "töökoht"]},
+    "ner": {"entities": [{"text": "Näidisfirma", "type": "Organization"}, {"text": "Pärnu", "type": "Location"}]},
+    "employment": {"event_type": "job_loss", "job_count": 12, "organization": "Näidisfirma", "confidence": 0.84, "evidence_text": "kaob 12 töökohta"},
+    "emtak": {"code": "C", "label": "Manufacturing", "confidence": 0.83}
+  },
+  "synthetic_invalid_01": {
+    "nlp": {"lemmas": ["teatama", "looma", "töökoht"], "keywords": ["värbamine", "töökoht"]},
+    "ner": {"entities": [{"text": "Näidisettevõte", "type": "Organization"}]},
+    "employment": {"event_type": "job_gain", "job_count": -1, "organization": "Näidisettevõte", "confidence": 0.93, "evidence_text": "loob järgmisel aastal viis töökohta"},
+    "emtak": {"code": "N", "label": "Administrative and support service activities", "confidence": 0.61}
+  }
+}

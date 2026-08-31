@@ -1,0 +1,28 @@
+{
+  "contract_id": "TC-NLP-RDF",
+  "version": "1.0.0",
+  "purpose": "Section VI employment-event trajectory evaluation",
+  "stages": [
+    "ingest",
+    "parse",
+    "nlp",
+    "ner",
+    "employment_classification",
+    "emtak_classification",
+    "provenance_generation",
+    "trajectory_generation",
+    "rdf_mapping",
+    "acceptance_validation"
+  ],
+  "required_run_types": ["run-0", "run-1", "run-var"],
+  "identifier_policy": "stable record IDs; run-scoped activity and artifact IDs",
+  "hash_algorithm": "sha256",
+  "core_comparison_fields": ["event_type", "job_count", "organization", "emtak_code", "acceptance_decision"],
+  "excluded_from_core_comparison": ["run_id", "generated_at", "activity_id", "trajectory_id"],
+  "schemas": {
+    "employment": "schemas/employment.schema.json",
+    "trajectory": "schemas/trajectory.schema.json",
+    "validation": "schemas/validation-report.schema.json"
+  },
+  "acceptance_policy": "acceptance-policy.json"
+}

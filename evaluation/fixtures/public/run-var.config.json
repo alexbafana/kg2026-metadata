@@ -1,0 +1,9 @@
+{
+  "run_id": "fixture-run-var",
+  "run_type": "run-var",
+  "contract_version": "1.0.0",
+  "employment_confidence_threshold": 0.90,
+  "model": {"name": "fixture-adapter", "version": "1.0.0", "prompt_version": "fixture-1"},
+  "stage_mode": "fixture-adapter",
+  "varied_factor": {"name": "employment_confidence_threshold", "baseline": 0.70, "value": 0.90}
+}

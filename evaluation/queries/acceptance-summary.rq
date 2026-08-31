@@ -1,0 +1,8 @@
+PREFIX ex: <https://w3id.org/kg2026/schema/>
+
+SELECT ?outcome (COUNT(DISTINCT ?decision) AS ?count)
+WHERE {
+  ?decision a ex:AcceptanceDecision ; ex:outcome ?outcome .
+}
+GROUP BY ?outcome
+ORDER BY ?outcome

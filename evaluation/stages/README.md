@@ -46,3 +46,10 @@ If execution is interrupted, rerun the classifier with the same arguments plus
 `--resume`. It verifies the frozen execution fingerprint and every retained
 request, response, and prediction hash before skipping a completed record or
 continuing an incomplete one.
+
+The executed local tag was `llama3.2`; its manifest was verified against model
+layer digest
+`dde5aa3fc5ffc17176b5e8bdc82f587b24b2678c6c66101bf7da77af9f7ccdff`.
+See the [`public aggregate`](../results/public/employment-pilot/aggregate-summary.json)
+and [`independent-review protocol`](../protocol/INDEPENDENT_REVIEW.md). Exact
+inputs, commands, and item outputs remain controlled.

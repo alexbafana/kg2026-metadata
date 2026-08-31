@@ -17,3 +17,18 @@ The detailed logs, RDF files, query results, raw model I/O, and per-item outputs
 remain controlled because they may reproduce or reveal restricted source
 content. These counts report successful technical checks, not independent
 review of the reference labels or population-level classifier accuracy.
+
+Public checks from the repository root:
+
+```bash
+python3 -m pip install -r evaluation/requirements-validation.txt
+python3 -m unittest discover -s tests -v
+python3 evaluation/scripts/privacy_scan.py .
+```
+
+Controlled reviewers validate each generated Turtle file with `riot --validate`
+and execute `evaluation/scripts/query_rdf.py` with a controlled Turtle input,
+one of the queries under `evaluation/queries/`, and an output path inside the
+controlled package. The controlled `ALL_SHA256SUMS.txt` inventories the retained
+logs, RDF, comparisons, queries, raw invocations, and post-commit verification
+artifacts. It is withheld because its relative paths expose item identifiers.

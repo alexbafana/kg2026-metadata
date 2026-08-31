@@ -16,5 +16,10 @@ If a rights holder or data controller does not approve public release, store the
 item only in the controlled-access package and publish no more than approved
 metadata.
 
-Run `evaluation/scripts/privacy_scan.py` as a triage aid before release. It
-cannot establish legal compliance or identify all personal data.
+Run [`evaluation/scripts/privacy_scan.py`](evaluation/scripts/privacy_scan.py)
+as a triage aid before release. The executed public-diff record is in
+[`evaluation/results/public/employment-pilot/PRIVACY_REVIEW.md`](evaluation/results/public/employment-pilot/PRIVACY_REVIEW.md).
+The scanner cannot establish legal compliance or identify all personal data;
+the independent release review in
+[`evaluation/protocol/INDEPENDENT_REVIEW.md`](evaluation/protocol/INDEPENDENT_REVIEW.md)
+remains required.

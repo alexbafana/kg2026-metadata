@@ -31,3 +31,8 @@ Reference labels are independent oracle data and must never be passed to the
 employment classifier. Two researchers should record event type, organization,
 job count, evidence span, expected disposition, reviewer IDs, and resolution of
 any disagreement.
+
+Use the [`independent-review protocol`](protocol/INDEPENDENT_REVIEW.md) for the
+item-level decisions. The current disclosure-screened
+[`public aggregate`](results/public/employment-pilot/aggregate-summary.json)
+remains provisional until that process is complete.

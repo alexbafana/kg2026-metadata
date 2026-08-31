@@ -6,5 +6,6 @@ files parse with RIOT, while none exposes a generating activity or processing
 trajectory link.
 
 This is useful comparative evidence, but it is not the Section VI experiment.
-The enhanced evaluation must execute the claim-aligned harness on the frozen
-employment sample and run the competency queries in `../queries/`.
+The enhanced employment-stage pilot has now executed the claim-aligned harness
+on the frozen controlled sample and run the competency queries in `../queries/`.
+Its public aggregate is under [`../results/public/employment-pilot/`](../results/public/employment-pilot/).

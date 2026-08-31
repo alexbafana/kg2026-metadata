@@ -39,19 +39,20 @@ are documented in [`evaluation/EXECUTED_AUDIT.md`](evaluation/EXECUTED_AUDIT.md)
 
 ## Traceability boundary
 
-Three controlled artifacts were checked for correspondence between plaintext,
-metadata, entity inventory, EMTAK output, and RDF. Those checks establish
-artifact correspondence only. They do not establish complete source-to-RDF
-provenance because the retained RDF has no `prov:wasGeneratedBy` or
-`ver:hasProcessingTrajectory` links and the source inventory lacks verified
-retrieval records for most items. Detailed hashes remain restricted.
+Three legacy controlled correspondence candidates were checked across
+plaintext, metadata, entity inventory, EMTAK output, and RDF. Those legacy
+checks establish artifact correspondence only: the legacy RDF has no
+`prov:wasGeneratedBy` or `ver:hasProcessingTrajectory` links. By contrast, the
+enhanced 12-item employment pilot generated those links and demonstrated three
+complete trace walkthroughs. Detailed item-level evidence remains restricted.
 
 ## Claim-aligned protocol
 
 The authoritative evaluation requirements are in
 [`evaluation/protocol/CLAIM_EVIDENCE_MATRIX.md`](evaluation/protocol/CLAIM_EVIDENCE_MATRIX.md).
-The legacy 162-file audit is the before-state; the paper's empirical claims
-require the controlled real employment sample and genuine model runs.
+The legacy 162-file audit is the before-state. The controlled employment sample
+and genuine local model runs now supply the bounded pilot evidence; its
+reference-based metrics remain provisional pending independent review.
 
 ## Release boundary
 

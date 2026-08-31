@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "KG 2026 public article metadata record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "record_id",
+    "source_publisher",
+    "source_url",
+    "publication_date",
+    "retrieval_date",
+    "content_sha256",
+    "rights_status",
+    "public_metadata_approved",
+    "reviewer"
+  ],
+  "properties": {
+    "record_id": {"type": "string", "pattern": "^[A-Za-z0-9_-]+$"},
+    "source_publisher": {"type": "string", "minLength": 1},
+    "source_url": {"type": "string", "format": "uri"},
+    "publication_date": {"type": "string", "format": "date"},
+    "retrieval_date": {"type": "string", "format": "date"},
+    "content_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "rights_status": {"enum": ["permission", "open-licence", "restricted", "pending"]},
+    "public_metadata_approved": {"type": "boolean"},
+    "reviewer": {"type": "string", "minLength": 1},
+    "notes": {"type": "string"}
+  }
+}

@@ -1,0 +1,19 @@
+# Controlled-access inputs, model assets, and execution outputs must never be public.
+restricted-data/
+restricted-evidence/
+model-assets/
+faiss-index/
+evaluation/runs/
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+keys/
+*.key
+*.pem
+
+__pycache__/
+*.py[cod]
+.venv/
+venv/

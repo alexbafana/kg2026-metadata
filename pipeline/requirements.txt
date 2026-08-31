@@ -1,0 +1,7 @@
+stanza
+transformers
+rdflib
+openai
+langchain_openai
+langchain_community
+faiss-cpu

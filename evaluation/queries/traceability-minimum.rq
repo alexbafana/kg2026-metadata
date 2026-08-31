@@ -1,0 +1,12 @@
+PREFIX ex: <http://mkm.ee/schema/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX ver: <http://mkm.ee/version/>
+
+SELECT ?article
+       (EXISTS { ?article prov:generatedAtTime ?generatedAt } AS ?hasGeneratedAtTime)
+       (EXISTS { ?article prov:wasGeneratedBy ?activity } AS ?hasGeneratingActivity)
+       (EXISTS { ?article ver:hasProcessingTrajectory ?trajectory } AS ?hasProcessingTrajectory)
+WHERE {
+  ?article a ex:Article .
+}
+ORDER BY ?article

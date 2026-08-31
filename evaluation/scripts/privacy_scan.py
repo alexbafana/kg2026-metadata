@@ -14,16 +14,29 @@ from pathlib import Path
 
 PATTERNS = {
     "email": re.compile(r"\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b", re.I),
-    "phone": re.compile(r"(?<!\w)(?:\+?\d[\d .()-]{6,}\d)(?!\w)"),
+    "phone": re.compile(
+        r"(?<!\w)(?!\d{4}-\d{2}-\d{2}(?!\d))(?:\+?\d[\d .()-]{6,}\d)(?!\w)"
+    ),
     "Estonian personal ID candidate": re.compile(r"(?<!\d)\d{11}(?!\d)"),
 }
+
+EXCLUDED_DIRECTORY_NAMES = {".git", ".venv", "__pycache__", "node_modules"}
 
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="Scan text-like files for review candidates.")
     parser.add_argument("path", type=Path, help="File or directory to scan")
     args = parser.parse_args()
-    files = [args.path] if args.path.is_file() else sorted(p for p in args.path.rglob("*") if p.is_file())
+    files = (
+        [args.path]
+        if args.path.is_file()
+        else sorted(
+            p
+            for p in args.path.rglob("*")
+            if p.is_file()
+            and not any(part in EXCLUDED_DIRECTORY_NAMES for part in p.parts)
+        )
+    )
     findings = 0
     for path in files:
         try:

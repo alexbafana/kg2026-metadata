@@ -1,0 +1,16 @@
+PREFIX cls: <http://mkm.ee/classification/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX ex: <http://mkm.ee/schema/>
+
+SELECT ?article ?date ?year
+       (COUNT(DISTINCT ?entity) AS ?entityCount)
+       (COUNT(DISTINCT ?emtak) AS ?emtakCount)
+WHERE {
+  ?article a ex:Article ;
+           dcterms:created ?date ;
+           ex:createdyear ?year .
+  OPTIONAL { ?article ex:mentions ?entity . }
+  OPTIONAL { ?article cls:hasEMTAKFaiss3 ?emtak . }
+}
+GROUP BY ?article ?date ?year
+ORDER BY ?article

@@ -25,13 +25,15 @@ outside GitHub under the process in [DATA_ACCESS.md](DATA_ACCESS.md).
 | `metadata/` | Empty, schema-led public manifest templates; add only approved metadata. |
 | `evaluation/` | Validation/query helpers and Section VI evidence protocol. |
 | `DATA_ACCESS.md` | Controlled-access and reviewer procedure. |
+| `REPRODUCIBILITY.md` | Executed/pending boundary and reproducibility limitations. |
 | `SECURITY.md` | Publication boundary and release checks. |
 
 ## Section VI claim boundary
 
 Evidence is **demonstrated** only where the actual reviewed artifact and a
 successful execution record are available. This repository currently supplies
-the protocol and tooling, not a claimed Run-0/Run-1/Run-Var result.
+the protocol, tooling, and a reviewed aggregate RDF syntax/query audit. It does
+not claim a completed Run-0/Run-1/Run-Var evaluation.
 
 ## Controlled execution
 

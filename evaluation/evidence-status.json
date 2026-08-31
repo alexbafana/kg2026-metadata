@@ -1,0 +1,39 @@
+{
+  "as_of": "2026-08-31",
+  "claim_rule": "demonstrated only when an artifact exists or a retained command completed successfully",
+  "restricted_pipeline_commit": "234fd2fdb94cf005345f87573b317598979617f9",
+  "source_inventory": {
+    "status": "demonstrated_locally_restricted",
+    "records": 162,
+    "rights_cleared": 0,
+    "public_metadata_approved": 0,
+    "verified_canonical_urls": 1
+  },
+  "controlled_access": {
+    "status": "blocked",
+    "reason": "authoritative institutional location and responsible data controller remain undesignated"
+  },
+  "run_0": {"status": "pending"},
+  "run_1": {"status": "pending"},
+  "run_var": {"status": "pending"},
+  "riot_validation": {
+    "status": "demonstrated",
+    "engine": "Apache Jena RIOT 6.2.0",
+    "artifacts_passed": 162,
+    "artifacts_failed": 0
+  },
+  "sparql_candidate_audit": {
+    "status": "demonstrated",
+    "engine": "Apache Jena ARQ 6.2.0",
+    "candidates": 3,
+    "complete_provenance_walkthroughs": 0
+  },
+  "fixed_release": {
+    "status": "pending",
+    "reason": "evidence runs, licence, controller, environment lock, and publication approval are incomplete"
+  },
+  "doi": {
+    "status": "pending",
+    "reason": "archive integration is not authenticated and no final release exists"
+  }
+}

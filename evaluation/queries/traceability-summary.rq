@@ -1,0 +1,23 @@
+PREFIX ex: <http://mkm.ee/schema/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX ver: <http://mkm.ee/version/>
+
+SELECT (COUNT(DISTINCT ?article) AS ?articleCount)
+       (COUNT(DISTINCT ?withTimestamp) AS ?withTimestampCount)
+       (COUNT(DISTINCT ?withActivity) AS ?withActivityCount)
+       (COUNT(DISTINCT ?withTrajectory) AS ?withTrajectoryCount)
+WHERE {
+  ?article a ex:Article .
+  OPTIONAL {
+    ?article prov:generatedAtTime ?generatedAt .
+    BIND(?article AS ?withTimestamp)
+  }
+  OPTIONAL {
+    ?article prov:wasGeneratedBy ?activity .
+    BIND(?article AS ?withActivity)
+  }
+  OPTIONAL {
+    ?article ver:hasProcessingTrajectory ?trajectory .
+    BIND(?article AS ?withTrajectory)
+  }
+}

@@ -13,3 +13,7 @@ Public publication may report approved aggregate outcomes and integrity hashes.
 Use the scripts in `scripts/` inside the controlled environment. A validation
 script or query template is not evidence until it has completed successfully and
 its output is retained.
+
+The query templates in `queries/` avoid returning article body text, titles,
+entity values, or classifications. The executed aggregate audit and precise
+claim boundary are in `EXECUTED_AUDIT.md` and `evidence-status.json`.

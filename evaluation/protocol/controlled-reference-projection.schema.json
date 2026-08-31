@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/alexbafana/kg2026-metadata/evaluation/protocol/controlled-reference-projection.schema.json",
+  "title": "Controlled employment reference projection",
+  "description": "Privacy-safe labels projected from controlled sources; article text is prohibited.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "sample_id", "records"],
+  "properties": {
+    "schema_version": {"const": "controlled-reference-projection-v1"},
+    "sample_id": {"type": "string", "minLength": 1},
+    "records": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "record_id",
+          "review_status",
+          "event_type",
+          "job_count",
+          "evidence_span_ids"
+        ],
+        "properties": {
+          "record_id": {"type": "string", "minLength": 1},
+          "review_status": {
+            "enum": ["preliminary", "second_reviewed", "final"]
+          },
+          "event_type": {
+            "enum": ["job_gain", "job_loss", "no_event", "ambiguous"]
+          },
+          "job_count": {
+            "oneOf": [
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["scorable", "value"],
+                "properties": {
+                  "scorable": {"const": true},
+                  "value": {"type": "integer", "minimum": 0}
+                }
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["scorable", "value"],
+                "properties": {
+                  "scorable": {"const": false},
+                  "value": {"type": "null"}
+                }
+              }
+            ]
+          },
+          "evidence_span_ids": {
+            "description": "Opaque controlled span identifiers; use sha256:<hex> for an exact evidence-text hash. An empty list means grounding is not scorable.",
+            "type": "array",
+            "uniqueItems": true,
+            "items": {"type": "string", "minLength": 1}
+          }
+        }
+      }
+    }
+  }
+}

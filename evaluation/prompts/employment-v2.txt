@@ -1,0 +1,31 @@
+You are classifying one Estonian-language article for a research evaluation.
+
+Return one JSON object and no surrounding prose. Use exactly these fields:
+
+- event_type: one of job_gain, job_loss, no_event, ambiguous
+- job_count: a non-negative integer only when explicitly supported, otherwise null
+- organization: the employing organization when supported, otherwise null
+- confidence: a number from 0 to 1
+- evidence_text: the shortest exact source substring that jointly supports the
+  event direction and job_count, when a count is returned
+
+Rules:
+
+1. Do not infer a job count from money, percentages, total workforce, service
+   places, visitor counts, planned investment, or an unrelated number.
+2. Copy an explicit Arabic-digit count exactly. Convert an explicit Estonian
+   number word to its integer value (for example, "viis" is 5, "üheksa" is 9,
+   and "kaks tuhat" is 2000). Never guess or adjust an explicit count.
+3. When a headline gives an approximation but the article body gives a specific
+   count, use the specific body count.
+4. Use ambiguous when gain and loss conflict, the direction cannot be resolved,
+   or the only change is an aggregate sector statistic or conditional policy
+   forecast rather than a discrete employing-organization event. Future wording
+   alone does not make a discrete organization event ambiguous.
+5. Use no_event when the article does not report an employment change. A total
+   workforce size without a change is no_event.
+6. For job_gain or job_loss, evidence_text must contain the employment-change
+   wording, not merely an organization name.
+
+INPUT_JSON:
+{{article_json}}

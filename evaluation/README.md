@@ -30,6 +30,7 @@ for the normative claim-to-evidence mapping.
 | `queries/` | SPARQL competency and audit queries |
 | `baseline/` | Legacy corpus-level audit and limitations |
 | `results/public/` | Reviewed aggregate results only |
+| `stages/` | Controlled dataset preparation and local employment-classifier adapters |
 | `scripts/` | Supporting validation and privacy utilities |
 
 Run-specific real evidence belongs in `evaluation/runs/`, which is ignored by
@@ -39,6 +40,7 @@ after their complete output directories exist and their commands succeed.
 ## Status boundary
 
 The legacy RIOT/SPARQL audit is executed baseline evidence. The public fixture
-workflow is an exercisability test. Neither substitutes for the paper's real
-employment-event evaluation. Current demonstrated and pending claims are listed
-in [`evidence-status.json`](evidence-status.json).
+workflow remains an exercisability test. A controlled 12-item employment-stage
+pilot has now also executed; only its reviewer-safe aggregate is public, and its
+reference-based metrics remain provisional pending independent review. Current
+demonstrated and pending claims are listed in [`evidence-status.json`](evidence-status.json).

@@ -35,11 +35,12 @@ outside GitHub under the process in [DATA_ACCESS.md](DATA_ACCESS.md).
 
 ## Section VI claim boundary
 
-Evidence is **demonstrated** only where the actual reviewed artifact and a
-successful execution record are available. This repository currently supplies
-the claim-aligned protocol, versioned contract, an executable public fixture
-workflow, and a reviewed aggregate legacy RDF audit. It does not claim that the
-real employment-event Run-0/Run-1/Run-Var evaluation is complete.
+Evidence is **demonstrated** only where an artifact exists and the corresponding
+command completed successfully. This repository supplies the claim-aligned
+protocol, versioned contract, executable fixture workflow, reviewed aggregate
+legacy RDF audit, and a reviewer-safe aggregate from an executed controlled
+employment-stage Run-0/Run-1/Run-Var pilot. Reference-based agreement remains
+provisional until two independent reviewers complete the recorded protocol.
 
 ## Five-minute public check
 
@@ -56,9 +57,10 @@ model accuracy.
 
 ## Controlled execution
 
-The real experiment requires a frozen employment-focused sample and a genuinely
-executed, version-pinned employment classifier. Those assets are deliberately
-not substituted by the public fixtures. See [DATA_ACCESS.md](DATA_ACCESS.md).
+The controlled experiment uses a frozen 12-item employment sample and a
+digest-pinned local employment classifier. Restricted inputs, raw model I/O,
+per-item predictions, and exact evidence remain outside GitHub. See
+[DATA_ACCESS.md](DATA_ACCESS.md).
 
 Before adding public metadata, validate each row against
 [`metadata/article-manifest-schema.json`](metadata/article-manifest-schema.json)

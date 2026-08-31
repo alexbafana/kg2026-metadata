@@ -4,31 +4,31 @@
   "paper_claims": {
     "C1_explicit_prov_compatible_trajectory": {
       "public_fixture": "demonstrated",
-      "real_evaluation": "pending"
+      "real_evaluation": "demonstrated_employment_stage_only_12_of_12"
     },
     "C2_repeatability": {
       "public_fixture": "demonstrated_3_of_3_core_agreement",
-      "real_evaluation": "pending"
+      "real_evaluation": "demonstrated_12_of_12_core_and_decision_agreement"
     },
     "C3_explainable_variation": {
       "public_fixture": "demonstrated_1_of_1_difference_explained",
-      "real_evaluation": "pending"
+      "real_evaluation": "demonstrated_1_threshold_attributable_decision_change"
     },
     "C4_contract_and_acceptance": {
       "public_fixture": "demonstrated_all_outcome_paths_across_runs",
-      "real_evaluation": "pending"
+      "real_evaluation": "demonstrated_all_36_validation_decisions"
     },
     "C5_statement_traceability": {
       "public_fixture": "demonstrated_3_of_3_assertions",
-      "real_evaluation": "pending"
+      "real_evaluation": "demonstrated_3_of_3_controlled_walkthroughs"
     },
     "C6_employment_running_case": {
       "public_fixture": "smoke_test_only",
-      "real_evaluation": "blocked_missing_employment_focused_sample_and_executed_model_stage"
+      "real_evaluation": "executed_12_items_reference_agreement_provisional_pending_independent_review"
     },
     "C7_improved_traceability": {
       "legacy_baseline": "demonstrated_0_of_162_generating_activity_and_trajectory_links",
-      "enhanced_real_evaluation": "pending"
+      "enhanced_real_evaluation": "demonstrated_employment_stage_links_12_of_12"
     }
   },
   "legacy_baseline": {
@@ -41,10 +41,11 @@
     "reason": "authoritative institutional location and responsible data controller remain undesignated"
   },
   "real_runs": {
-    "run_0": "pending",
-    "run_1": "pending",
-    "run_var": "pending"
+    "run_0": "complete_controlled",
+    "run_1": "complete_controlled",
+    "run_var": "complete_controlled_threshold_only"
   },
-  "fixed_release": "pending_real_evaluation_and_review",
+  "reference_review": "pending_two_independent_reviewers",
+  "fixed_release": "pending_independent_review",
   "doi": "pending_final_release"
 }

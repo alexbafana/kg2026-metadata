@@ -23,6 +23,17 @@ PATTERNS = {
 EXCLUDED_DIRECTORY_NAMES = {".git", ".venv", "__pycache__", "node_modules"}
 
 
+def scan_text(line: str, label: str) -> str:
+    """Remove machine-number forms that otherwise resemble phone numbers."""
+    if label != "phone":
+        return line
+    return re.sub(
+        r"https?://\S+|\b(?:\d{1,3}\.){3}\d{1,3}(?::\d+)?\b|\b\d+\.\d+\b",
+        "",
+        line,
+    )
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Scan text-like files for review candidates.")
     parser.add_argument("path", type=Path, help="File or directory to scan")
@@ -45,7 +56,7 @@ def main() -> int:
             continue
         for label, pattern in PATTERNS.items():
             for line_number, line in enumerate(text.splitlines(), start=1):
-                if pattern.search(line):
+                if pattern.search(scan_text(line, label)):
                     print(f"REVIEW: {path}:{line_number}: possible {label}")
                     findings += 1
     print(f"Completed scan: {findings} review candidate(s). Human review remains required.")

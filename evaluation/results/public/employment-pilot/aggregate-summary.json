@@ -1,0 +1,57 @@
+{
+  "schema_version": "employment-public-aggregate-v1",
+  "status": "provisional_pending_independent_reference_review",
+  "sample": {
+    "record_count": 12,
+    "selection": "purposefully stratified challenge sample",
+    "dataset_sha256": "dd4251ab0c5794ee942c98e21c02232bc5b414d7fce5d6d3c74ae581f815e9cf"
+  },
+  "model": {
+    "provider_scope": "local-only",
+    "name": "Llama 3.2",
+    "layer_sha256": "dde5aa3fc5ffc17176b5e8bdc82f587b24b2678c6c66101bf7da77af9f7ccdff",
+    "prompt_sha256": "865cf1d1310f27f76013a5e65ac9d0003fa360f045f6e687d5384528d792f872"
+  },
+  "repeatability": {
+    "run_0_prediction_sha256": "7d2aad5cf21f28f8e66780e6df813e1f3d107e5c843afa2ed45b8a04a9571e82",
+    "run_1_prediction_sha256": "7d2aad5cf21f28f8e66780e6df813e1f3d107e5c843afa2ed45b8a04a9571e82",
+    "core_identical": 12,
+    "records": 12,
+    "decision_identical": 12
+  },
+  "threshold_variant": {
+    "baseline": 0.70,
+    "variant": 0.90,
+    "decision_identical": 11,
+    "decision_changed": 1
+  },
+  "provisional_reference_agreement": {
+    "event_type_correct": 6,
+    "event_type_scored": 12,
+    "event_type_rate": 0.5,
+    "macro_f1": 0.30952380952380953,
+    "job_count_exact_correct": 4,
+    "job_count_exact_scored": 5,
+    "job_count_exact_rate": 0.8
+  },
+  "validation": {
+    "rdflib_turtle_passed": 36,
+    "rdflib_turtle_total": 36,
+    "riot_passed": 36,
+    "riot_total": 36,
+    "jena_riot_version": "6.2.0",
+    "sparql_walkthroughs_passed": 3,
+    "sparql_walkthroughs_total": 3
+  },
+  "publication_boundary": {
+    "article_text_published": false,
+    "pdf_captures_published": false,
+    "raw_model_io_published": false,
+    "per_item_predictions_published": false
+  },
+  "limitations": [
+    "Reference labels remain provisional until independent author review.",
+    "The selected 12-item sample does not support population-level accuracy claims.",
+    "NLP, NER, and EMTAK stages were not rerun in this employment-stage evaluation."
+  ]
+}

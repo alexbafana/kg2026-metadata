@@ -41,7 +41,9 @@ research-data environment.
 
 ## Publication prerequisites
 
-Before Section VI claims an executed evaluation, retain an access decision,
-rights inventory, run-specific manifest, and the complete restricted evidence
-pack. The paper must describe this as controlled-access reproduction, not
-open-data reproduction.
+Before Section VI cites the pilot as final reviewed evidence, retain the access
+decision, rights inventory, run-specific manifests, independent reference
+reviews, and complete restricted evidence pack. The technical pilot has been
+executed, but the pending controller/location designation prevents describing
+it as openly reproducible. The paper must describe this as controlled-access
+reproduction, not open-data reproduction.

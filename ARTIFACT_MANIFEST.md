@@ -2,13 +2,13 @@
 
 | Artifact | Repository realization | Public fixture status | Real Section VI status |
 | --- | --- | --- | --- |
-| T1 — trajectory representation | `evaluation/contracts/v1/schemas/trajectory.schema.json`, generated trajectory JSON/RDF | Executed | Pending |
-| T2 — transformation and acceptance contract | `evaluation/contracts/v1/contract.json`, `acceptance-policy.json`, SHACL shapes | Executed | Pending |
-| T3 — executable trace query | `evaluation/queries/statement-trace.rq` | Executed for 3 assertions | Pending |
-| T4 — trace bundle | Assertion-centered RDF linking source, run, trajectory, model, contract, and decision | Executed for 3 assertions | Pending |
-| Employment running case | Public author-created fixtures and recorded fixture predictions | Smoke test only | Blocked pending suitable sample and genuine classifier execution |
+| T1 — trajectory representation | `evaluation/contracts/v1/schemas/trajectory.schema.json`, generated trajectory JSON/RDF | Executed | Demonstrated for 12/12 controlled employment items |
+| T2 — transformation and acceptance contract | `evaluation/contracts/v1/contract.json`, `acceptance-policy.json`, SHACL shapes | Executed | Demonstrated across 36 controlled run decisions |
+| T3 — executable trace query | `evaluation/queries/statement-trace.rq` | Executed for 3 assertions | Demonstrated for 3/3 controlled walkthroughs |
+| T4 — trace bundle | Assertion-centered RDF linking source, run, trajectory, model, contract, and decision | Executed for 3 assertions | Demonstrated for 12/12 controlled items; three walkthroughs audited |
+| Employment running case | Public author-created fixtures plus controlled local-LLM pilot | Smoke test only | Executed for 12 items; reference metrics provisional pending independent review |
 | Legacy comparator | 162 retained RDF artifacts at restricted commit `234fd2fdb94cf005345f87573b317598979617f9` | Aggregate audit published | Executed baseline |
 
-The public fixture exercises the representation and validation machinery. It is
-not a replacement for the real controlled experiment and must not be used as an
-empirical employment-model result.
+The public fixture exercises the representation and validation machinery and is
+not an empirical employment-model result. The real pilot evidence remains
+controlled; only its disclosure-screened aggregate and hashes are public.

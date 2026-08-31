@@ -12,6 +12,7 @@ import argparse
 import csv
 import hashlib
 import json
+import re
 from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import quote
@@ -30,6 +31,7 @@ STAGES = [
     "acceptance_validation",
 ]
 EVENT_TYPES = {"job_gain", "job_loss", "no_event", "ambiguous"}
+SAFE_RECORD_ID = re.compile(r"^[A-Za-z0-9._-]+$")
 
 
 def canonical_bytes(value: object) -> bytes:
@@ -84,7 +86,12 @@ def validation_report(record: dict[str, str], prediction: dict, config: dict) ->
             "reject",
             f"employment.job_count={job_count!r}",
         ),
-        check("R-EVIDENCE", not gain_or_loss or bool(evidence_text.strip()), "conditional", "employment.evidence_text"),
+        check(
+            "R-EVIDENCE",
+            not gain_or_loss or (bool(evidence_text.strip()) and evidence_text in record["body"]),
+            "conditional",
+            "employment.evidence_text must be an exact normalized-source substring",
+        ),
         check(
             "R-CONFIDENCE",
             not gain_or_loss or (isinstance(confidence, (int, float)) and confidence >= config["employment_confidence_threshold"]),
@@ -126,7 +133,7 @@ def turtle(record: dict[str, str], prediction: dict, config: dict, provenance: d
         "@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .",
         "",
         f"<{article}> a ex:Article ; ex:hasEmploymentAssertion <{assertion}> .",
-        f"<{source}> a prov:Entity ; ex:sha256 {literal(provenance['source_sha256'])} .",
+        f"<{source}> a prov:Entity ; ex:sha256 {literal(provenance['source_sha256'])} ; ex:normalizedTextSha256 {literal(provenance['normalized_text_sha256'])} .",
         f"<{assertion}> a rdf:Statement, ex:EmploymentAssertion ;",
         f"  rdf:subject <{article}> ;",
         "  rdf:predicate ex:employmentEvent ;",
@@ -134,7 +141,6 @@ def turtle(record: dict[str, str], prediction: dict, config: dict, provenance: d
         f"  ex:employmentEvent {literal(employment['event_type'])} ;",
         f"  ex:confidence {employment['confidence']} ;",
         f"  ex:evidenceSha256 {literal(provenance['evidence_sha256'])} ;",
-        f"  ex:hasEMTAKCode {literal(emtak['code'])} ;",
         f"  prov:wasDerivedFrom <{source}> ;",
         f"  prov:wasGeneratedBy <{run}> ;",
         f"  ver:hasProcessingTrajectory <{traj}> ;",
@@ -145,6 +151,8 @@ def turtle(record: dict[str, str], prediction: dict, config: dict, provenance: d
         lines.append(f"<{assertion}> ex:jobCount {employment['job_count']} .")
     if employment.get("organization"):
         lines.append(f"<{assertion}> ex:organization {literal(employment['organization'])} .")
+    if emtak.get("code") and emtak.get("code") != "NOT_EVALUATED":
+        lines.append(f"<{assertion}> ex:hasEMTAKCode {literal(emtak['code'])} .")
     lines.extend(
         [
             f"<{run}> a prov:Activity, ex:PipelineRun ; prov:used <{source}> ; ex:usedModel <{model}> ; ex:boundToContract <{contract}> .",
@@ -168,6 +176,7 @@ def main() -> int:
     parser.add_argument("--predictions", required=True, type=Path)
     parser.add_argument("--config", required=True, type=Path)
     parser.add_argument("--output", required=True, type=Path)
+    parser.add_argument("--extraction-manifest", type=Path)
     args = parser.parse_args()
 
     config = json.loads(args.config.read_text(encoding="utf-8"))
@@ -176,11 +185,29 @@ def main() -> int:
         records = list(csv.DictReader(stream))
     if not records:
         raise ValueError("dataset is empty")
-    missing = sorted({record["id"] for record in records} - set(predictions))
-    if missing:
-        raise ValueError(f"missing predictions for: {missing}")
+    record_ids = [record["id"] for record in records]
+    if len(record_ids) != len(set(record_ids)):
+        raise ValueError("dataset contains duplicate record IDs")
+    if any(not SAFE_RECORD_ID.fullmatch(record_id) for record_id in record_ids):
+        raise ValueError("dataset contains unsafe record IDs")
+    if set(record_ids) != set(predictions):
+        raise ValueError(
+            f"prediction IDs differ: missing={sorted(set(record_ids) - set(predictions))}, "
+            f"extra={sorted(set(predictions) - set(record_ids))}"
+        )
     if args.output.exists() and any(args.output.iterdir()):
         raise FileExistsError(f"output directory is not empty: {args.output}")
+
+    extraction_records = {}
+    extraction_manifest_sha = None
+    if args.extraction_manifest:
+        extraction = json.loads(args.extraction_manifest.read_text(encoding="utf-8"))
+        extraction_records = {item["record_id"]: item for item in extraction["records"]}
+        if set(extraction_records) != set(record_ids):
+            raise ValueError("extraction-manifest record IDs differ from dataset")
+        if extraction["dataset_sha256"] != hashlib.sha256(args.dataset.read_bytes()).hexdigest():
+            raise ValueError("extraction-manifest dataset hash mismatch")
+        extraction_manifest_sha = hashlib.sha256(args.extraction_manifest.read_bytes()).hexdigest()
 
     generated_at = datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
     decisions = {"accepted": 0, "conditional": 0, "rejected": 0}
@@ -188,7 +215,13 @@ def main() -> int:
     for record in records:
         record_id = record["id"]
         prediction = predictions[record_id]
-        source_sha = sha256(record)
+        extraction_record = extraction_records.get(record_id)
+        source_sha = extraction_record["pdf_sha256"] if extraction_record else sha256(record)
+        normalized_text_sha = (
+            extraction_record["normalized_text_sha256"]
+            if extraction_record
+            else hashlib.sha256(record["body"].encode("utf-8")).hexdigest()
+        )
         evidence_sha = hashlib.sha256(prediction["employment"].get("evidence_text", "").encode("utf-8")).hexdigest()
         report = validation_report(record, prediction, config)
         decisions[report["decision"]] += 1
@@ -198,7 +231,11 @@ def main() -> int:
             "record_id": record_id,
             "contract_version": config["contract_version"],
             "steps": [
-                {"position": position, "stage": stage, "mode": config["stage_mode"]}
+                {
+                    "position": position,
+                    "stage": stage,
+                    "mode": config.get("stage_modes", {}).get(stage, config.get("stage_mode", "unspecified")),
+                }
                 for position, stage in enumerate(STAGES, start=1)
             ],
         }
@@ -207,6 +244,7 @@ def main() -> int:
             "record_id": record_id,
             "generated_at": generated_at,
             "source_sha256": source_sha,
+            "normalized_text_sha256": normalized_text_sha,
             "evidence_sha256": evidence_sha,
             "model": config["model"],
             "config_sha256": sha256(config),
@@ -241,6 +279,7 @@ def main() -> int:
         "record_count": len(records),
         "dataset_sha256": hashlib.sha256(args.dataset.read_bytes()).hexdigest(),
         "predictions_sha256": hashlib.sha256(args.predictions.read_bytes()).hexdigest(),
+        "extraction_manifest_sha256": extraction_manifest_sha,
         "config": config,
         "config_sha256": sha256(config),
     }

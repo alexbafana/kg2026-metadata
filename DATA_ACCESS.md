@@ -9,9 +9,10 @@ contain full texts, copied body-text RDF literals, token-level outputs,
 per-article named-entity data, unreviewed excerpts, model indexes, secrets, or
 unreviewed logs.
 
-The restricted package holds the full corpus and per-article evidence needed
-for Run-0, Run-1, Run-Var, and trace walkthroughs. It must be stored in an
-institutionally approved location with access logging and retention controls.
+The restricted pilot package holds the frozen 12-item sample and item-level
+evidence for Run-0, Run-1, Run-Var, and trace walkthroughs. The separate legacy
+corpus contains 162 items. Both must be stored in an institutionally approved
+location with access logging and retention controls.
 
 ## Current control register
 
@@ -41,7 +42,9 @@ research-data environment.
 
 ## Publication prerequisites
 
-Before Section VI claims an executed evaluation, retain an access decision,
-rights inventory, run-specific manifest, and the complete restricted evidence
-pack. The paper must describe this as controlled-access reproduction, not
-open-data reproduction.
+Before Section VI cites the pilot as final reviewed evidence, retain the access
+decision, rights inventory, run-specific manifests, independent reference
+reviews, and complete restricted evidence pack. The technical pilot has been
+executed, but the pending controller/location designation prevents describing
+it as openly reproducible. The paper must describe this as controlled-access
+reproduction, not open-data reproduction.

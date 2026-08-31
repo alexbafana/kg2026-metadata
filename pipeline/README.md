@@ -6,5 +6,7 @@ paths, unpinned models/dependencies, missing local assets, an absent employment
 stage, and no complete contract/provenance/trajectory/acceptance implementation.
 
 The claim-aligned evaluation contract, protocol, fixtures, and harness are under
-[`../evaluation/`](../evaluation/). No result should be marked demonstrated
-merely because this legacy source is present.
+[`../evaluation/`](../evaluation/). The controlled employment-stage pilot used
+those components plus [`evaluation/stages/`](../evaluation/stages/); it did not
+execute this legacy pipeline. No result should be marked demonstrated merely
+because legacy source is present.

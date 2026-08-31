@@ -2,34 +2,36 @@
 
 ## Evaluation sample
 
-Freeze 10–12 restricted Estonian employment-related articles before executing
-the real runs. Selection must follow a documented rule and cover job gain, job
-loss, no-event, and ambiguous cases. Record only opaque IDs and approved
-aggregates publicly. Source snapshots and labels remain controlled.
+The sample was frozen before model execution as 12 restricted Estonian
+employment-related articles covering apparent job gain, job loss, no-event,
+and ambiguous or difficult cases. Only approved aggregates and hashes are
+public. Source snapshots, normalized text, and labels remain controlled.
 
-Two researchers should review the reference fields: event type, employing
-organization, job count when explicit, evidence span, EMTAK context, and
-expected disposition. Record disagreements and their resolution; do not claim a
-large-sample accuracy benchmark.
+Two independent researchers must review the reference fields: event type,
+employing organization, job count when explicit, evidence span, and expected
+disposition. Record disagreements and their resolution; do not claim a
+large-sample accuracy benchmark. EMTAK was not executed in this pilot.
 
 ## Runs
 
 - **Run-0:** baseline execution with the frozen sample, contract, models,
   prompts, mappings, and acceptance policy.
-- **Run-1:** independent repeat with exactly the same substantive configuration.
-- **Run-Var:** repeat with one declared factor changed. The preferred minimal
-  factor is `employment_confidence_threshold`; all other substantive fields
-  remain identical.
+- **Run-1:** separate repeat on the same local setup with exactly the same
+  substantive configuration.
+- **Run-Var:** the frozen Run-0 predictions were reused and only
+  `employment_confidence_threshold` changed from 0.70 to 0.90. This is an
+  acceptance-policy variation, not a third model invocation.
 
 Run directories must be isolated. A failed item makes the run incomplete; the
 orchestrator must not suppress the failure.
 
 ## Comparison semantics
 
-Compare canonical core RDF separately from run-specific provenance. Timestamps,
-run IDs, and generated evidence hashes are expected to differ. Employment-event
-type, job count, organization, EMTAK assertion, and acceptance decision are core
-comparison fields.
+Compare canonical semantic fields separately from run-specific provenance.
+Timestamps and run IDs are expected to differ. Employment-event type, job
+count, organization, evidence hash, and acceptance decision are comparison
+fields. EMTAK is explicitly `NOT_EVALUATED` and is not represented as a
+produced classification.
 
 ## Acceptance outcomes
 

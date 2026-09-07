@@ -1,14 +1,15 @@
 # Security, privacy, and rights boundary
 
-This repository is public metadata only. A public release requires a documented
-source-by-source assessment of copyright/licensing, confidentiality, and data
-protection. Public availability of a source does not by itself authorise
-redistribution of its text or derived copies.
+This repository includes the 12 ERR article captures under
+`evaluation/data/employment-sample-v1/`, published with written permission for
+the research repository and archival release. That permission is specific to
+the identified sample and does not authorize redistribution of other ERR
+content.
 
-Never commit source texts, RDF `bodyText` values, token-level annotations,
-named-entity outputs, model indexes, API keys, passwords, access links, or
-unreviewed evidence logs. The `.gitignore` file blocks common restricted paths;
-it is not a substitute for human review.
+Outside the approved 12-article directory, do not commit source texts, RDF
+`bodyText` values, token-level annotations, named-entity outputs, model indexes,
+API keys, passwords, access links, or unreviewed evidence logs. The `.gitignore`
+file blocks common restricted paths; it is not a substitute for human review.
 
 The owner must retain a rights inventory identifying source URL, retrieval date,
 rights holder, lawful basis, licence/permission, release decision, and reviewer.

@@ -1,11 +1,11 @@
 # Documentation map
 
-This repository is the public, privacy-minimized reproducibility companion for
-Section VI of the NLP-to-knowledge-graph paper. It contains methods, contracts,
-synthetic fixtures, legacy aggregate evidence, and disclosure-screened
-aggregates from a controlled 12-item employment-stage pilot. It deliberately
-does not contain source PDFs, normalized news text, raw model I/O, evidence
-excerpts, preliminary labels, or per-item real-source predictions.
+This repository is the public reproducibility companion for Section VI of the
+NLP-to-knowledge-graph paper. It contains methods, contracts, synthetic
+fixtures, legacy aggregate evidence, disclosure-screened pilot aggregates, and
+the exact 12 ERR source PDFs used by the employment-stage evaluation. Raw model
+I/O, preliminary labels, and unreviewed item-level predictions remain outside
+the public tree.
 
 ## Start here
 
@@ -16,11 +16,12 @@ excerpts, preliminary labels, or per-item real-source predictions.
 | Which paper claims are evaluated? | [`evaluation/protocol/CLAIM_EVIDENCE_MATRIX.md`](evaluation/protocol/CLAIM_EVIDENCE_MATRIX.md) |
 | How was the controlled pilot designed? | [`evaluation/protocol/EVALUATION_DESIGN.md`](evaluation/protocol/EVALUATION_DESIGN.md) |
 | What data was used and why? | [`evaluation/DATASET_CARD.md`](evaluation/DATASET_CARD.md) |
+| Where are the 12 source articles? | [`evaluation/data/employment-sample-v1/`](evaluation/data/employment-sample-v1/) |
 | Where are the public pilot results? | [`evaluation/results/public/employment-pilot/`](evaluation/results/public/employment-pilot/) |
 | How do I run the public smoke test? | [`evaluation/harness/README.md`](evaluation/harness/README.md) |
 | How are controlled inputs/model outputs produced? | [`evaluation/stages/README.md`](evaluation/stages/README.md) |
 | How must independent reviewers check the evidence? | [`evaluation/protocol/INDEPENDENT_REVIEW.md`](evaluation/protocol/INDEPENDENT_REVIEW.md) |
-| Why is the real corpus not public? | [`DATA_ACCESS.md`](DATA_ACCESS.md) and [`SECURITY.md`](SECURITY.md) |
+| Which materials are public or controlled? | [`DATA_ACCESS.md`](DATA_ACCESS.md) and [`SECURITY.md`](SECURITY.md) |
 | What did the legacy baseline show? | [`evaluation/EXECUTED_AUDIT.md`](evaluation/EXECUTED_AUDIT.md) |
 
 ## Repository layers
@@ -31,11 +32,11 @@ excerpts, preliminary labels, or per-item real-source predictions.
    anyone can execute without controlled access.
 3. `evaluation/contracts/`, `evaluation/harness/`, `evaluation/stages/`, and
    `evaluation/queries/` contain the evaluation method.
-4. `evaluation/results/public/` contains only synthetic results and
-   disclosure-screened aggregates.
-5. The evidence package outside GitHub contains the frozen 12 PDFs, normalized
-   input, raw invocations, Run-0/Run-1/Run-Var evidence, preliminary references,
-   detailed query results, and comprehensive checksums.
+4. `evaluation/data/employment-sample-v1/` contains the frozen 12 PDFs and
+   source manifest needed to reconstruct the normalized evaluation input.
+5. `evaluation/results/public/` contains synthetic results and
+   disclosure-screened aggregates. Raw invocations, unreviewed item-level run
+   evidence, and preliminary references remain outside GitHub.
 
 ## Current result in one paragraph
 
@@ -52,23 +53,25 @@ accuracy estimates.
 ## What a third party can reproduce now
 
 - run the three-item public synthetic fixture and inspect its evidence package;
+- inspect and checksum the exact 12 ERR source captures;
+- reconstruct the normalized 12-item input and rerun the employment stage with
+  the declared model setup;
 - inspect the schemas, acceptance contract, prompt, queries, comparison code,
   and scorer;
 - verify public aggregate hashes and documented validation counts; and
 - inspect the independent-review and privacy/release protocol.
 
-A third party cannot rerun the real 12 items from this public repository alone,
-because release of the source material and text-derived item outputs has not
-been authorized. Approved reviewers require controlled access under
-[`DATA_ACCESS.md`](DATA_ACCESS.md).
+The source-input barrier has been removed: the 12 PDFs and their manifest are
+now public with written ERR permission. Exact reproduction still depends on the
+declared software/model environment, while verification of preliminary labels
+and unreviewed item-level run evidence follows [`DATA_ACCESS.md`](DATA_ACCESS.md).
 
 ## Release checklist
 
 The technical pilot and post-commit verification are complete. Before citing a
 fixed repository artifact in Section VI, the project must still:
 
-1. designate an authoritative institutional controlled-access location and
-   responsible data controller;
+1. retain the written ERR permission and the released source checksums;
 2. obtain two independent item-level reference reviews and adjudicate any
    disagreement;
 3. obtain independent technical and privacy/rights review of the frozen public

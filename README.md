@@ -1,10 +1,10 @@
 # KG 2026 Metadata
 
-This is the public metadata and reproducibility companion for the Section VI
-evaluation of a trajectory-aware NLP-to-RDF pipeline. It has a fresh Git
-history and intentionally contains **no news article body text, per-article
-derived output, model index, credential, or run evidence that could disclose
-restricted source material**.
+This is the public reproducibility companion for the Section VI evaluation of
+a trajectory-aware NLP-to-RDF pipeline. It includes the exact 12 ERR article
+captures used by the employment-stage pilot, published with written permission,
+together with methods, contracts, manifests, and reviewed aggregate results.
+Credentials, model assets, and unreviewed run evidence are not included.
 
 New readers should begin with the
 [`DOCUMENTATION_INDEX.md`](DOCUMENTATION_INDEX.md) navigation guide.
@@ -12,14 +12,15 @@ New readers should begin with the
 ## What this repository supports
 
 - review of the pipeline implementation and evaluation protocol;
-- inspection of non-sensitive metadata, manifests, hashes, and aggregate
+- inspection of the exact 12 source PDFs, metadata, manifests, hashes, and
   disclosure-screened aggregate results, explicitly provisional where noted;
-- controlled re-execution by authorised reviewers who have approved access to
-  the source corpus and model assets.
+- reconstruction of the normalized 12-item input and re-execution of the
+  employment-stage evaluation by researchers with the declared model setup;
 - public execution of a synthetic contract/trajectory/acceptance smoke test.
 
-It does not provide open-data replication. The full evidence package is held
-outside GitHub under the process in [DATA_ACCESS.md](DATA_ACCESS.md).
+The [12-article dataset](evaluation/data/employment-sample-v1/) is directly
+available in this repository. Detailed raw model I/O and unreviewed item-level
+evidence remain outside GitHub under the process in [DATA_ACCESS.md](DATA_ACCESS.md).
 
 ## Repository structure
 
@@ -28,6 +29,7 @@ outside GitHub under the process in [DATA_ACCESS.md](DATA_ACCESS.md).
 | `pipeline/` | Legacy pipeline source retained as baseline material; not the Section VI executor. |
 | `metadata/` | Empty, schema-led public manifest templates; add only approved metadata. |
 | `evaluation/protocol/` | Normative claim-to-evidence matrix and fixed experimental design. |
+| `evaluation/data/employment-sample-v1/` | Exact 12 ERR article captures, manifest, source links, and checksums. |
 | `evaluation/contracts/v1/` | Versioned transformation and acceptance contract. |
 | `evaluation/harness/` | Evidence, provenance, trajectory, RDF, acceptance, and comparison tools. |
 | `evaluation/stages/` | Controlled dataset preparation and local employment-classifier execution. |
@@ -61,11 +63,12 @@ The author-created fixture is a smoke test, not evidence about real news or
 model accuracy. Choose a fresh output directory when rerunning because the
 harness intentionally refuses to overwrite an existing non-empty directory.
 
-## Controlled execution
+## Employment-stage reproduction
 
-The controlled experiment uses a frozen 12-item employment sample and a
-digest-pinned local employment classifier. Restricted inputs, raw model I/O,
-per-item predictions, and exact evidence remain outside GitHub. See
+The experiment uses the frozen public 12-item employment sample and a
+digest-pinned local employment classifier. The source captures and manifest are
+available under [`evaluation/data/employment-sample-v1/`](evaluation/data/employment-sample-v1/).
+Raw model I/O and unreviewed item-level decisions remain outside GitHub; see
 [DATA_ACCESS.md](DATA_ACCESS.md).
 
 See the [controlled-stage instructions](evaluation/stages/README.md),

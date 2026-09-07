@@ -28,6 +28,7 @@ the historical upstream NLP, NER, or EMTAK stages.
 | Path | Role |
 | --- | --- |
 | [`protocol/`](protocol/) | Fixed design, claim matrix, metrics, run definitions, and independent review |
+| [`data/employment-sample-v1/`](data/employment-sample-v1/) | Exact 12 ERR source PDFs, manifest, URLs, and checksums |
 | `contracts/v1/` | Versioned input/output schemas and acceptance policy |
 | `fixtures/public/` | Author-created synthetic smoke-test cases; never empirical paper evidence |
 | [`harness/`](harness/) | Executable evidence assembly, provenance, trajectory, validation, and comparison tools |
@@ -37,15 +38,16 @@ the historical upstream NLP, NER, or EMTAK stages.
 | [`stages/`](stages/) | Controlled dataset preparation and local employment-classifier execution |
 | `scripts/` | Supporting validation and privacy utilities |
 
-`evaluation/runs/` is an ignored conventional path for local controlled work;
-the current authoritative pilot evidence is retained outside this public Git
-tree. Run-0, Run-1, and Run-Var count as demonstrated only because their
-complete controlled packages and successful command records exist.
+`evaluation/runs/` is an ignored conventional path for local run output. The
+frozen source inputs are public, while raw model I/O and unreviewed item-level
+evidence remain outside this Git tree. Run-0, Run-1, and Run-Var count as
+demonstrated because their complete retained packages and successful command
+records exist.
 
 ## Status boundary
 
 The legacy RIOT/SPARQL audit is executed baseline evidence. The public fixture
-workflow remains an exercisability test. A controlled 12-item employment-stage
+workflow remains an exercisability test. A reproducible-input 12-item employment-stage
 pilot has now also executed; only its disclosure-screened aggregate is public, and its
 reference-based metrics remain provisional pending independent review. Current
 demonstrated and pending claims are listed in [`evidence-status.json`](evidence-status.json).

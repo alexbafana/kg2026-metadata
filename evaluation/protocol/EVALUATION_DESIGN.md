@@ -2,10 +2,12 @@
 
 ## Evaluation sample
 
-The sample was frozen before model execution as 12 restricted Estonian
-employment-related articles covering apparent job gain, job loss, no-event,
-and ambiguous or difficult cases. Only approved aggregates and hashes are
-public. Source snapshots, normalized text, and labels remain controlled.
+The sample was frozen before model execution as 12 Estonian employment-related
+articles covering apparent job gain, job loss, no-event, and ambiguous or
+difficult cases. The exact source PDFs, manifest, URLs, and checksums are public
+under [`../data/employment-sample-v1/`](../data/employment-sample-v1/) with
+written ERR permission. Preliminary labels and unreviewed item-level results
+remain controlled.
 
 Two independent researchers must review the reference fields: event type,
 employing organization, job count when explicit, evidence span, and expected

@@ -18,16 +18,20 @@ The legacy pipeline as a whole was not rerun. A narrower employment-stage pilot
 was executed against a frozen controlled 12-item sample. Run-0 and Run-1 used
 identical substantive settings; Run-Var reused the retained Run-0 predictions
 and changed only the declared acceptance threshold from `0.70` to `0.90`.
-Source material, normalized text, raw model I/O, preliminary labels, and
-item-level results remain outside Git. Reviewer-safe aggregates are retained in
+The exact 12 PDF inputs and source manifest are public under
+[`evaluation/data/employment-sample-v1/`](evaluation/data/employment-sample-v1/),
+so third parties can reconstruct the normalized evaluation input. Raw model
+I/O, preliminary labels, and unreviewed item-level results remain outside Git.
+Reviewer-safe aggregates are retained in
 [`evaluation/results/public/employment-pilot/`](evaluation/results/public/employment-pilot/).
 
 The claim-aligned harness provides isolated output directories, explicit
 contract/version fields, ordered trajectories, PROV-linked RDF, and fail-fast
 acceptance reports. Its public fixture runs demonstrate that machinery only;
 they use recorded author-created fixture predictions. Separately, the
-controlled employment pilot used a digest-pinned local Llama 3.2 invocation and
-retained invocation evidence in controlled storage. That execution does not
+employment pilot used a digest-pinned local Llama 3.2 invocation and retained
+invocation evidence in controlled storage. Public source availability now
+permits rerunning that stage with the declared setup. That execution does not
 demonstrate rerunning the upstream NLP, NER, or EMTAK stages.
 
 ## Executed RDF audit
@@ -44,7 +48,8 @@ plaintext, metadata, entity inventory, EMTAK output, and RDF. Those legacy
 checks establish artifact correspondence only: the legacy RDF has no
 `prov:wasGeneratedBy` or `ver:hasProcessingTrajectory` links. By contrast, the
 enhanced 12-item employment pilot generated those links and demonstrated three
-complete trace walkthroughs. Detailed item-level evidence remains restricted.
+complete trace walkthroughs. Source PDFs are public; detailed unreviewed
+item-level run evidence remains controlled.
 
 ## Claim-aligned protocol
 

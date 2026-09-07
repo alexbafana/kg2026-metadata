@@ -13,10 +13,10 @@ Run-Var packages.
   employment-confidence threshold (`0.70` to `0.90`); one acceptance decision
   changed and 11 did not.
 
-The detailed logs, RDF files, query results, raw model I/O, and per-item outputs
-remain controlled because they may reproduce or reveal restricted source
-content. These counts report successful technical checks, not independent
-review of the reference labels or population-level classifier accuracy.
+The exact source PDFs and manifest are public. Detailed logs, RDF files, query
+results, raw model I/O, and unreviewed per-item outputs remain controlled. These
+counts report successful technical checks, not independent review of the
+reference labels or population-level classifier accuracy.
 
 Public checks from the repository root:
 

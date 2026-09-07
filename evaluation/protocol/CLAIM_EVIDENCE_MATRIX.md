@@ -15,6 +15,7 @@ answer one of these claims is supporting evidence, not the main evaluation.
 
 ## Claim boundary
 
-The experiment does not claim state-of-the-art NLP accuracy, legal permission
-to redistribute source texts, scalability, or independent replication. Such
-claims require separate evidence and must not be inferred from this package.
+The experiment does not claim state-of-the-art NLP accuracy, scalability, or
+completed independent replication. Written permission covers repository and
+archival publication of the identified 12 ERR articles only; it must not be
+inferred as a general licence for other publisher content.

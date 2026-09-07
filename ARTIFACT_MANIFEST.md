@@ -6,9 +6,10 @@
 | T2 — transformation and acceptance contract | `evaluation/contracts/v1/contract.json`, `acceptance-policy.json`, SHACL shapes | Executed | Demonstrated across 36 controlled run decisions |
 | T3 — executable trace query | `evaluation/queries/statement-trace.rq` | Executed for 3 assertions | Demonstrated for 3/3 controlled walkthroughs |
 | T4 — trace bundle | Assertion-centered RDF linking source, run, trajectory, model, contract, and decision | Executed for 3 assertions | Demonstrated for 12/12 controlled items; three walkthroughs audited |
-| Employment running case | Public author-created fixtures plus controlled local-LLM pilot | Smoke test only | Executed for 12 items; reference metrics provisional pending independent review |
+| Employment running case | Public author-created fixtures plus public 12-article ERR input sample and local-LLM pilot | Smoke test only | Source inputs reproducible; executed for 12 items; reference metrics provisional pending independent review |
 | Legacy comparator | 162 retained RDF artifacts at restricted commit `234fd2fdb94cf005345f87573b317598979617f9` | Aggregate audit published | Executed baseline |
 
 The public fixture exercises the representation and validation machinery and is
-not an empirical employment-model result. The real pilot evidence remains
-controlled; only its disclosure-screened aggregate and hashes are public.
+not an empirical employment-model result. The real pilot's exact 12 source PDFs,
+manifest, and disclosure-screened aggregates are public; raw model I/O and
+unreviewed item-level evidence remain controlled.

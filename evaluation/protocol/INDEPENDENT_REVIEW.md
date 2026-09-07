@@ -19,7 +19,8 @@ Replace the placeholders below when the evidence package is frozen.
 - Repository commit: `<COMMIT_SHA>`
 - Fixed release/tag: `<RELEASE_TAG_OR_PENDING>`
 - Public repository URL: `<PUBLIC_REPOSITORY_URL>`
-- Controlled evidence location: `<CONTROLLED_ACCESS_LOCATION>`
+- Public source sample: `evaluation/data/employment-sample-v1/`
+- Controlled run-evidence location: `<CONTROLLED_ACCESS_LOCATION>`
 - Sample manifest and hashes: `<SAMPLE_MANIFEST_PATH_OR_ID>`
 - Reference-label file: `<REFERENCE_LABEL_PATH_OR_ID>`
 - Run-0 manifest: `<RUN_0_MANIFEST_PATH_OR_ID>`
@@ -33,8 +34,8 @@ check; do not silently amend reviewed evidence.
 
 ## A. Review of the 12-article reference sample
 
-Review each article directly in controlled access, without relying on the
-generated prediction. For every item, independently record:
+Review each article directly from the frozen public sample, without relying on
+the generated prediction. For every item, independently record:
 
 1. whether the source identity, title, publisher, URL, publication date, file
    hash, and opaque sample ID match the manifest;
@@ -44,8 +45,8 @@ generated prediction. For every item, independently record:
    multiple counts, and absent counts;
 5. whether the event is actual, announced, planned, forecast, aggregate, or
    explicitly negated;
-6. the minimal source evidence supporting the label, recorded only in the
-   controlled review material;
+6. the minimal source evidence supporting the label, recorded in the review
+   material;
 7. whether the item should be retained, relabelled, or excluded; and
 8. any disagreement with the preliminary author-created reference label.
 
@@ -129,9 +130,12 @@ Every Section VI claim must remain within the boundary in
 ## E. Privacy, rights, and public-release boundary
 
 Review the proposed public diff and release contents, not merely the source
-working directory. Confirm that the public repository contains no:
+working directory. The 12 PDFs under `evaluation/data/employment-sample-v1/`
+are an approved exception supported by retained written ERR permission. Confirm
+that the public repository contains no:
 
-- article body text, screenshots, PDFs, or reconstructable excerpts;
+- other article body text, screenshots, PDFs, or reconstructable excerpts
+  outside that approved sample;
 - personal data copied from the restricted sources;
 - API keys, credentials, private endpoints, or access tokens;
 - raw model responses that reproduce source content;
@@ -140,9 +144,9 @@ working directory. Confirm that the public repository contains no:
 - claim that source texts are licensed for redistribution unless documented
   rights evidence supports it.
 
-The public package may contain reviewed non-sensitive aggregates, opaque IDs,
-content hashes, protocols, schemas, and code. Evidence excerpts remain in
-controlled review material.
+The public package may contain the approved 12 PDFs, reviewed non-sensitive
+aggregates, opaque IDs, content hashes, protocols, schemas, and code. Unreviewed
+item-level labels and run evidence remain in controlled review material.
 Hash publication establishes identity, not redistribution rights or anonymity.
 
 Record the privacy/rights scan command and result, manual review scope, reviewer,

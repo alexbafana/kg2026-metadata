@@ -1,9 +1,11 @@
 # Employment-stage pilot evidence
 
-This directory contains only disclosure-screened aggregate evidence from the
-controlled 12-item employment sample. The source PDFs, normalized article text,
-raw model requests and responses, evidence quotations, and per-item predictions
-remain in controlled storage and are not part of this repository.
+This directory contains disclosure-screened aggregate evidence from the
+12-item employment sample. The exact source PDFs and manifest are public under
+[`../../../data/employment-sample-v1/`](../../../data/employment-sample-v1/),
+allowing third parties to inspect the evaluated sources and reconstruct the
+normalized input. Raw model requests and responses, preliminary labels,
+evidence quotations, and unreviewed per-item predictions remain controlled.
 
 The aggregate agreement values are **provisional** until two independent
 reviewers inspect the reference projection and adjudicate disagreements.
@@ -22,9 +24,9 @@ See [`aggregate-summary.json`](aggregate-summary.json) for the minimized
 machine-readable results, [`VALIDATION.md`](VALIDATION.md) for technical checks,
 and [`PRIVACY_REVIEW.md`](PRIVACY_REVIEW.md) for the public-diff screening record.
 
-Not demonstrated:
+Still not demonstrated:
 
 - general or population-level classification accuracy;
 - rerun NLP, NER, or EMTAK classification;
-- public reproducibility of the restricted article texts;
-- legal permission to redistribute publisher content.
+- independent replication on a separate model installation; or
+- final reference-based metrics before the two-reviewer process is complete.

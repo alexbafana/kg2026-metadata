@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-08-31",
+  "as_of": "2026-09-07",
   "claim_rule": "demonstrated only when an artifact exists or a retained command completed successfully",
   "paper_claims": {
     "C1_explicit_prov_compatible_trajectory": {
@@ -36,9 +36,14 @@
     "riot": "demonstrated_162_pass_0_fail",
     "complete_provenance_walkthroughs": 0
   },
-  "controlled_access": {
-    "status": "blocked",
-    "reason": "authoritative institutional location and responsible data controller remain undesignated"
+  "source_input_access": {
+    "status": "public_with_permission",
+    "path": "evaluation/data/employment-sample-v1",
+    "scope": "exact 12 ERR PDF captures and source manifest"
+  },
+  "controlled_run_evidence": {
+    "status": "pending_institutional_designation",
+    "reason": "authoritative institutional location and responsible data controller remain undesignated for raw model I/O and unreviewed item-level evidence"
   },
   "real_runs": {
     "run_0": "complete_controlled",

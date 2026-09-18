@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-09-07",
+  "as_of": "2026-09-18",
   "claim_rule": "demonstrated only when an artifact exists or a retained command completed successfully",
   "paper_claims": {
     "C1_explicit_prov_compatible_trajectory": {
@@ -50,7 +50,7 @@
     "run_1": "complete_controlled",
     "run_var": "complete_controlled_threshold_only"
   },
-  "reference_review": "pending_two_independent_reviewers",
+  "reference_review": "one_independent_review_received_revisions_preserved_second_review_and_adjudication_pending",
   "fixed_release": "pending_independent_review",
   "doi": "pending_final_release"
 }

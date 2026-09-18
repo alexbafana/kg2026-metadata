@@ -6,9 +6,10 @@ The pilot uses 12 frozen Estonian articles selected before model execution to
 cover apparent gain, loss, no-event, and difficult or ambiguous cases. The
 exact PDFs, source inventory, source URLs, and checksums are public under
 [`data/employment-sample-v1/`](data/employment-sample-v1/) with written ERR
-permission. The normalized input can be reconstructed from these files. Two
-independent reviews and adjudication are still required before the
-reference-based metrics become final.
+permission. The normalized input can be reconstructed from these files. One
+independent item-level review has been received and revised, with both versions
+preserved in controlled storage. A second independent review and adjudication
+are still required before the reference-based metrics become final.
 
 ## Current restricted legacy corpus
 
@@ -31,9 +32,12 @@ RDF generation, provenance/trajectory links, SHACL, and SPARQL queries.
 ## Reference review
 
 Reference labels are independent oracle data and must never be passed to the
-employment classifier. Two researchers should record event type, organization,
-job count, evidence span, expected disposition, reviewer IDs, and resolution of
-any disagreement.
+employment classifier. The received review covers all 12 frozen articles;
+its revisions include multiple rows for articles containing multiple distinct
+claims. The original and revised decisions remain separate in controlled
+storage. The second reviewer and adjudicator must record event type,
+organization, job count, evidence span, expected disposition, reviewer IDs,
+and resolution of each disagreement.
 
 Use the [`independent-review protocol`](protocol/INDEPENDENT_REVIEW.md) for the
 item-level decisions. The current disclosure-screened

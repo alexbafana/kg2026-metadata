@@ -20,9 +20,17 @@ Demonstrated now:
 - RDFLib and Apache Jena RIOT parsing of all 36 generated Turtle artifacts;
 - three successful SPARQL trace walkthroughs.
 
+A separately dated supplementary check on the retained controlled RDF reports
+36/36 conformance to the declared trace SHACL shapes and 36/36 executions of
+an extended query that returns stage labels and modes. This narrows the
+structural-validation and stage-mode evidence gaps; it does not establish
+semantic correctness or intermediate-artifact links.
+
 See [`aggregate-summary.json`](aggregate-summary.json) for the minimized
 machine-readable results, [`VALIDATION.md`](VALIDATION.md) for technical checks,
 and [`PRIVACY_REVIEW.md`](PRIVACY_REVIEW.md) for the public-diff screening record.
+The supplementary check and its limits are documented in
+[`SUPPLEMENTARY_VALIDATION.md`](SUPPLEMENTARY_VALIDATION.md).
 
 Still not demonstrated:
 

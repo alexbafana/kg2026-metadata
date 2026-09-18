@@ -17,6 +17,8 @@ New readers should begin with the
 - reconstruction of the normalized 12-item input and re-execution of the
   employment-stage evaluation by researchers with the declared model setup;
 - public execution of a synthetic contract/trajectory/acceptance smoke test.
+- inspection of supplementary aggregate trace-shape and stage-mode checks
+  against retained controlled RDF, without access to per-item outputs.
 
 The [12-article dataset](evaluation/data/employment-sample-v1/) is directly
 available in this repository. Detailed raw model I/O and unreviewed item-level

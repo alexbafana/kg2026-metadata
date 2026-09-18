@@ -18,6 +18,13 @@ results, raw model I/O, and unreviewed per-item outputs remain controlled. These
 counts report successful technical checks, not independent review of the
 reference labels or population-level classifier accuracy.
 
+Supplementary checks performed on 2026-09-18 are reported separately in
+[`SUPPLEMENTARY_VALIDATION.md`](SUPPLEMENTARY_VALIDATION.md): all 36 retained
+Turtle files conformed to the declared trace SHACL shapes, and an extended
+query retrieved stage labels and execution modes in ten rows per file. These
+checks were not part of the original validation record and do not establish
+semantic correctness or intermediate-artifact retrieval.
+
 Public checks from the repository root:
 
 ```bash

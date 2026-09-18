@@ -43,9 +43,19 @@
     "sparql_walkthroughs_passed": 3,
     "sparql_walkthroughs_total": 3
   },
+  "supplementary_validation": {
+    "date": "2026-09-18",
+    "trace_shacl_conformant": 36,
+    "trace_shacl_total": 36,
+    "extended_mode_query_passed": 36,
+    "extended_mode_query_total": 36,
+    "extended_mode_query_rows": 360,
+    "report": "SUPPLEMENTARY_VALIDATION.md"
+  },
   "publication_boundary": {
-    "article_text_published": false,
-    "pdf_captures_published": false,
+    "article_text_published": true,
+    "pdf_captures_published": true,
+    "normalized_input_csv_published": false,
     "raw_model_io_published": false,
     "per_item_predictions_published": false
   },

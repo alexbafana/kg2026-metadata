@@ -51,6 +51,14 @@ enhanced 12-item employment pilot generated those links and demonstrated three
 complete trace walkthroughs. Source PDFs are public; detailed unreviewed
 item-level run evidence remains controlled.
 
+A separately dated supplementary validation on the retained controlled RDF
+reports 36/36 conformance to the declared trace SHACL shapes. An extended
+query also retrieves stage labels and execution modes for all 36 files, ten
+rows per file. These checks do not establish semantic correctness, explicit
+intermediate-artifact links, or execution of every declared stage. The
+aggregate method and result are in
+[`SUPPLEMENTARY_VALIDATION.md`](evaluation/results/public/employment-pilot/SUPPLEMENTARY_VALIDATION.md).
+
 ## Claim-aligned protocol
 
 The authoritative evaluation requirements are in

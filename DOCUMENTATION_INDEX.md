@@ -14,10 +14,12 @@ the public tree.
 | What is this repository and what can it support? | [`README.md`](README.md) |
 | What is demonstrated, provisional, or pending? | [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md) and [`evaluation/evidence-status.json`](evaluation/evidence-status.json) |
 | Which paper claims are evaluated? | [`evaluation/protocol/CLAIM_EVIDENCE_MATRIX.md`](evaluation/protocol/CLAIM_EVIDENCE_MATRIX.md) |
+| How do the current manuscript claims align with retained evidence? | [`evaluation/CLAIM_ALIGNMENT_2026-09-18.md`](evaluation/CLAIM_ALIGNMENT_2026-09-18.md) |
 | How was the controlled pilot designed? | [`evaluation/protocol/EVALUATION_DESIGN.md`](evaluation/protocol/EVALUATION_DESIGN.md) |
 | What data was used and why? | [`evaluation/DATASET_CARD.md`](evaluation/DATASET_CARD.md) |
 | Where are the 12 source articles? | [`evaluation/data/employment-sample-v1/`](evaluation/data/employment-sample-v1/) |
 | Where are the public pilot results? | [`evaluation/results/public/employment-pilot/`](evaluation/results/public/employment-pilot/) |
+| Which supplementary trace checks were executed? | [`SUPPLEMENTARY_VALIDATION.md`](evaluation/results/public/employment-pilot/SUPPLEMENTARY_VALIDATION.md) |
 | How do I run the public smoke test? | [`evaluation/harness/README.md`](evaluation/harness/README.md) |
 | How are controlled inputs/model outputs produced? | [`evaluation/stages/README.md`](evaluation/stages/README.md) |
 | How must independent reviewers check the evidence? | [`evaluation/protocol/INDEPENDENT_REVIEW.md`](evaluation/protocol/INDEPENDENT_REVIEW.md) |
@@ -45,6 +47,9 @@ with identical substantive settings; the prediction-file hash, 12/12 canonical
 semantic outputs, and 12/12 acceptance decisions matched. A threshold-only
 variant changed one decision. RDFLib and Apache Jena RIOT parsed all 36
 generated Turtle artifacts, and three SPARQL trace walkthroughs succeeded. The
+supplementary trace-shape check finds 36/36 conformant files, and the extended
+query retrieves stage execution modes for all 36 files. Neither result
+establishes semantic correctness or intermediate-artifact links. The
 preliminary event-type agreement is 6/12 (macro-F1 0.310), and exact job-count
 agreement is 4/5 eligible items. Those reference-based values remain
 provisional pending two independent reviews; they are not population-level

@@ -50,6 +50,13 @@
     "run_1": "complete_controlled",
     "run_var": "complete_controlled_threshold_only"
   },
+  "supplementary_validation": {
+    "date": "2026-09-18",
+    "trace_shacl": "controlled_36_of_36_conform_to_declared_trace_shapes",
+    "stage_mode_query": "controlled_36_of_36_files_ten_positioned_mode_rows_each",
+    "semantic_correctness": "not_established",
+    "intermediate_artifact_retrieval": "not_established"
+  },
   "reference_review": "one_independent_review_received_revisions_preserved_second_review_and_adjudication_pending",
   "fixed_release": "pending_independent_review",
   "doi": "pending_final_release"

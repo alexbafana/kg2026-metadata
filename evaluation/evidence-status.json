@@ -20,7 +20,7 @@
     },
     "C5_statement_traceability": {
       "public_fixture": "demonstrated_3_of_3_assertions",
-      "real_evaluation": "demonstrated_3_of_3_controlled_walkthroughs"
+      "real_evaluation": "demonstrated_3_of_3_controlled_walkthroughs; materialized links only"
     },
     "C6_employment_running_case": {
       "public_fixture": "smoke_test_only",
@@ -28,7 +28,7 @@
     },
     "C7_improved_traceability": {
       "legacy_baseline": "demonstrated_0_of_162_generating_activity_and_trajectory_links",
-      "enhanced_real_evaluation": "demonstrated_employment_stage_links_12_of_12"
+      "enhanced_real_evaluation": "demonstrated_employment_stage_run_source_contract_decision_links; complete lineage not established"
     }
   },
   "legacy_baseline": {

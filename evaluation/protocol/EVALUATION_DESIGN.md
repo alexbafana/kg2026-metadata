@@ -31,9 +31,10 @@ orchestrator must not suppress the failure.
 
 Compare canonical semantic fields separately from run-specific provenance.
 Timestamps and run IDs are expected to differ. Employment-event type, job
-count, organization, evidence hash, and acceptance decision are comparison
-fields. EMTAK is explicitly `NOT_EVALUATED` and is not represented as a
-produced classification.
+count, organization, EMTAK placeholder, and acceptance decision are the five
+declared comparison fields. The EMTAK value is `NOT_EVALUATED`, so it records
+the contract boundary rather than a produced classification; the evidence
+hash is retained as a diagnostic field outside this comparison core.
 
 ## Acceptance outcomes
 
@@ -45,9 +46,10 @@ classes.
 ## Trace walkthroughs
 
 Choose at least three statements using a rule fixed before inspecting their
-trace results. Each walkthrough must recover source evidence, intermediate
-artifacts, ordered steps, model/configuration, contract version, validation
-report, and acceptance decision using the stored evidence and SPARQL queries.
+trace results. The current controlled walkthroughs recover source references
+and hashes, ordered steps, model/configuration, contract version, validation
+report, and acceptance decision. Intermediate-artifact retrieval is required
+where those artifacts are retained, but is not claimed for the current pilot.
 
 ## Required result tables
 

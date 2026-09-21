@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://w3id.org/kg2026/schema/employment/1.0.0",
+  "$id": "https://github.com/alexbafana/kg2026-metadata#schema//employment/1.0.0",
   "title": "Employment event output",
   "type": "object",
   "additionalProperties": false,

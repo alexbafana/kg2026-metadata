@@ -17,6 +17,11 @@ from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import quote
 
+try:
+    from jsonschema import Draft202012Validator
+except ImportError:  # pragma: no cover - validation requirements install this dependency
+    Draft202012Validator = None
+
 
 STAGES = [
     "ingest",
@@ -52,7 +57,7 @@ def literal(value: object) -> str:
 
 
 def iri(kind: str, value: str) -> str:
-    return f"https://w3id.org/kg2026/{kind}/{quote(value, safe='')}"
+    return f"https://github.com/alexbafana/kg2026-metadata/ns/{kind}/{quote(value, safe='')}"
 
 
 def check(rule_id: str, passed: bool, severity: str, evidence: str) -> dict[str, str]:
@@ -98,8 +103,8 @@ def validation_report(record: dict[str, str], prediction: dict, config: dict) ->
             "conditional",
             f"confidence={confidence!r}; threshold={config['employment_confidence_threshold']}",
         ),
-        check("R-PROVENANCE", True, "reject", "generated assertion/activity/source links"),
-        check("R-TRAJECTORY", True, "reject", "generated assertion/trajectory/contract links"),
+        check("R-PROVENANCE", bool(record.get("id")), "reject", "generated assertion/activity/source links"),
+        check("R-TRAJECTORY", bool(config.get("contract_version")), "reject", "generated assertion/trajectory/contract links"),
     ]
     failed = [item for item in checks if item["status"] == "fail"]
     if any(item["severity"] == "reject" for item in failed):
@@ -117,7 +122,8 @@ def turtle(record: dict[str, str], prediction: dict, config: dict, provenance: d
     employment = prediction["employment"]
     emtak = prediction["emtak"]
     article = iri("article", record_id)
-    assertion = iri("assertion", f"{record_id}-employment")
+    assertion = iri("assertion", f"{run_id}-{record_id}-employment")
+    candidate = iri("candidate", f"{record_id}-employment")
     run = iri("run", run_id)
     source = iri("source", record_id)
     traj = iri("trajectory", trajectory["trajectory_id"])
@@ -126,15 +132,17 @@ def turtle(record: dict[str, str], prediction: dict, config: dict, provenance: d
     model = iri("model", f"{config['model']['name']}-{config['model']['version']}")
     lines = [
         "@prefix dcterms: <http://purl.org/dc/terms/> .",
-        "@prefix ex: <https://w3id.org/kg2026/schema/> .",
+        "@prefix ex: <https://github.com/alexbafana/kg2026-metadata#schema/> .",
         "@prefix prov: <http://www.w3.org/ns/prov#> .",
         "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .",
-        "@prefix ver: <https://w3id.org/kg2026/version/> .",
+        "@prefix ver: <https://github.com/alexbafana/kg2026-metadata#version/> .",
         "@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .",
         "",
         f"<{article}> a ex:Article ; ex:hasEmploymentAssertion <{assertion}> .",
+        f"<{candidate}> a ex:EmploymentCandidate ; ex:recordId {literal(record_id)} .",
         f"<{source}> a prov:Entity ; ex:sha256 {literal(provenance['source_sha256'])} ; ex:normalizedTextSha256 {literal(provenance['normalized_text_sha256'])} .",
         f"<{assertion}> a rdf:Statement, ex:EmploymentAssertion ;",
+        f"  ex:aboutCandidate <{candidate}> ;",
         f"  rdf:subject <{article}> ;",
         "  rdf:predicate ex:employmentEvent ;",
         f"  rdf:object {literal(employment['event_type'])} ;",
@@ -155,13 +163,16 @@ def turtle(record: dict[str, str], prediction: dict, config: dict, provenance: d
         lines.append(f"<{assertion}> ex:hasEMTAKCode {literal(emtak['code'])} .")
     lines.extend(
         [
-            f"<{run}> a prov:Activity, ex:PipelineRun ; prov:used <{source}> ; ex:usedModel <{model}> ; ex:boundToContract <{contract}> .",
+            f"<{run}> a prov:Activity, ex:PipelineRun ; prov:used <{source}> ; prov:wasAssociatedWith <{model}> ; ex:usedModel <{model}> ; ex:boundToContract <{contract}> .",
             f"<{traj}> a ex:ProcessingTrajectory ; ex:run <{run}> ; ex:branchTaken {literal(report['decision'])} .",
             f"<{decision}> a ex:AcceptanceDecision ; ex:outcome {literal(report['decision'])} .",
             f"<{contract}> a ex:TransformationContract ; dcterms:hasVersion {literal(config['contract_version'])} .",
             f"<{model}> a prov:SoftwareAgent ; dcterms:hasVersion {literal(config['model']['version'])} ; ex:promptVersion {literal(config['model']['prompt_version'])} .",
         ]
     )
+    if config.get("run_type") == "run-var":
+        baseline_assertion = iri("assertion", f"{config.get('baseline_run_id', 'employment-run-0')}-{record_id}-employment")
+        lines.append(f"<{assertion}> ex:reusedPredictionFrom <{baseline_assertion}> .")
     for step in trajectory["steps"]:
         step_iri = iri("step", f"{trajectory['trajectory_id']}-{step['position']:02d}")
         lines.append(
@@ -177,9 +188,20 @@ def main() -> int:
     parser.add_argument("--config", required=True, type=Path)
     parser.add_argument("--output", required=True, type=Path)
     parser.add_argument("--extraction-manifest", type=Path)
+    parser.add_argument("--contract", type=Path)
+    parser.add_argument("--policy", type=Path)
     args = parser.parse_args()
 
     config = json.loads(args.config.read_text(encoding="utf-8"))
+    base = Path(__file__).resolve().parents[1] / "contracts" / "v1"
+    contract_path = args.contract or base / "contract.json"
+    policy_path = args.policy or base / "acceptance-policy.json"
+    contract = json.loads(contract_path.read_text(encoding="utf-8"))
+    policy = json.loads(policy_path.read_text(encoding="utf-8"))
+    if config.get("contract_version") != contract.get("version"):
+        raise ValueError("config contract version does not match contract.json")
+    if policy.get("version") != contract.get("version"):
+        raise ValueError("acceptance policy version does not match contract version")
     predictions = json.loads(args.predictions.read_text(encoding="utf-8"))
     with args.dataset.open(encoding="utf-8", newline="") as stream:
         records = list(csv.DictReader(stream))
@@ -236,9 +258,15 @@ def main() -> int:
                     "stage": stage,
                     "mode": config.get("stage_modes", {}).get(stage, config.get("stage_mode", "unspecified")),
                 }
-                for position, stage in enumerate(STAGES, start=1)
+                for position, stage in enumerate(contract.get("stages", STAGES), start=1)
             ],
         }
+        if [step["stage"] for step in trajectory["steps"]] != contract.get("stages", STAGES):
+            raise ValueError("trajectory stages do not match contract.json")
+        if Draft202012Validator is not None:
+            schema_path = base / "schemas" / "trajectory.schema.json"
+            schema = json.loads(schema_path.read_text(encoding="utf-8"))
+            Draft202012Validator(schema).validate(trajectory)
         provenance = {
             "run_id": config["run_id"],
             "record_id": record_id,
@@ -272,7 +300,7 @@ def main() -> int:
         }
         per_record.append({**core, "core_sha256": sha256(core)})
 
-    manifest = {
+        manifest = {
         "run_id": config["run_id"],
         "run_type": config["run_type"],
         "generated_at": generated_at,
@@ -282,6 +310,8 @@ def main() -> int:
         "extraction_manifest_sha256": extraction_manifest_sha,
         "config": config,
         "config_sha256": sha256(config),
+        "contract_sha256": hashlib.sha256(contract_path.read_bytes()).hexdigest(),
+        "policy_sha256": hashlib.sha256(policy_path.read_bytes()).hexdigest(),
     }
     aggregate = {"run_id": config["run_id"], "record_count": len(records), "decisions": decisions, "per_record": per_record}
     write_json(args.output / "run-manifest.json", manifest)

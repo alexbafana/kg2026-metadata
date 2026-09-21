@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-message: "If you use this repository, please cite the archived release named in the associated paper."
+message: "If you use this repository, please cite the paper and the repository commit used. A citable archival release is pending."
 title: "KG 2026 Metadata"
 authors:
   - family-names: Norta

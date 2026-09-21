@@ -1,0 +1,21 @@
+@prefix ex: <https://github.com/alexbafana/kg2026-metadata#schema/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+ex:EmploymentAssertion a rdfs:Class ; rdfs:subClassOf rdf:Statement .
+ex:ProcessingTrajectory a rdfs:Class .
+ex:ProcessingStep a rdfs:Class .
+ex:AcceptanceDecision a rdfs:Class .
+ex:TransformationContract a rdfs:Class .
+ex:PipelineRun a rdfs:Class ; rdfs:subClassOf prov:Activity .
+ex:Article a rdfs:Class ; rdfs:subClassOf prov:Entity .
+ex:aboutCandidate a rdf:Property .
+ex:governedBy a rdf:Property .
+ex:validatedBy a rdf:Property .
+ex:hasEmploymentAssertion a rdf:Property .
+ex:hasStep a rdf:Property .
+ex:position a rdf:Property .
+ex:stage a rdf:Property .
+ex:mode a rdf:Property .
+ex:outcome a rdf:Property .

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://w3id.org/kg2026/schema/reference-label/1.0.0",
+  "$id": "https://github.com/alexbafana/kg2026-metadata#schema//reference-label/1.0.0",
   "title": "Human-reviewed employment reference",
   "type": "object",
   "additionalProperties": false,

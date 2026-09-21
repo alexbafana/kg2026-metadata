@@ -1,4 +1,4 @@
-PREFIX ex: <https://w3id.org/kg2026/schema/>
+PREFIX ex: <https://github.com/alexbafana/kg2026-metadata#schema/>
 
 SELECT ?outcome (COUNT(DISTINCT ?decision) AS ?count)
 WHERE {

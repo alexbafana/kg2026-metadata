@@ -1,7 +1,7 @@
-@prefix ex: <https://w3id.org/kg2026/schema/> .
+@prefix ex: <https://github.com/alexbafana/kg2026-metadata#schema/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
-@prefix ver: <https://w3id.org/kg2026/version/> .
+@prefix ver: <https://github.com/alexbafana/kg2026-metadata#version/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 ex:EmploymentAssertionShape a sh:NodeShape ;

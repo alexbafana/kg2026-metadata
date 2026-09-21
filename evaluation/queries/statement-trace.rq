@@ -1,6 +1,6 @@
-PREFIX ex: <https://w3id.org/kg2026/schema/>
+PREFIX ex: <https://github.com/alexbafana/kg2026-metadata#schema/>
 PREFIX prov: <http://www.w3.org/ns/prov#>
-PREFIX ver: <https://w3id.org/kg2026/version/>
+PREFIX ver: <https://github.com/alexbafana/kg2026-metadata#version/>
 
 SELECT ?assertion ?source ?sourceHash ?run ?trajectory ?step ?position
        ?model ?modelVersion ?contract ?decision ?outcome

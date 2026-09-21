@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://w3id.org/kg2026/schema/trajectory/1.0.0",
+  "$id": "https://github.com/alexbafana/kg2026-metadata#schema//trajectory/1.0.0",
   "title": "Ordered processing trajectory",
   "type": "object",
   "additionalProperties": false,
@@ -20,7 +20,7 @@
         "properties": {
           "position": {"type": "integer", "minimum": 1},
           "stage": {"type": "string", "minLength": 1},
-          "mode": {"enum": ["executed", "retained-input", "fixture-adapter"]}
+          "mode": {"type": "string", "minLength": 1}
         }
       }
     }

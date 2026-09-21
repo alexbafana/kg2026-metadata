@@ -3,7 +3,7 @@
 This is the public reproducibility companion for the Section VI evaluation of
 a trajectory-aware NLP-to-RDF pipeline. It includes the exact 12 ERR article
 captures used by the employment-stage pilot, published with written permission,
-together with methods, contracts, manifests, and reviewed aggregate results.
+together with methods, contracts, manifests, and disclosure-screened aggregate results.
 Credentials, model assets, and unreviewed run evidence are not included.
 
 New readers should begin with the
@@ -14,8 +14,10 @@ New readers should begin with the
 - review of the pipeline implementation and evaluation protocol;
 - inspection of the exact 12 source PDFs, metadata, manifests, hashes, and
   disclosure-screened aggregate results, explicitly provisional where noted;
-- reconstruction of the normalized 12-item input and re-execution of the
-  employment-stage evaluation by researchers with the declared model setup;
+- reconstruction of the normalized 12-item input and an attempted
+  re-execution of the employment-stage evaluation by researchers with the
+  declared model setup; exact model assets and item-level evidence remain
+  required for independent equality checks;
 - public execution of a synthetic contract/trajectory/acceptance smoke test.
 - inspection of supplementary aggregate trace-shape and stage-mode checks
   against retained controlled RDF, without access to per-item outputs.
@@ -33,6 +35,7 @@ evidence remain outside GitHub under the process in [DATA_ACCESS.md](DATA_ACCESS
 | `evaluation/protocol/` | Normative claim-to-evidence matrix and fixed experimental design. |
 | `evaluation/data/employment-sample-v1/` | Exact 12 ERR article captures, manifest, source links, and checksums. |
 | `evaluation/contracts/v1/` | Versioned transformation and acceptance contract. |
+| `vocab/` | Repository-controlled schema and version vocabulary used by generated RDF. |
 | `evaluation/harness/` | Evidence, provenance, trajectory, RDF, acceptance, and comparison tools. |
 | `evaluation/stages/` | Controlled dataset preparation and local employment-classifier execution. |
 | `evaluation/fixtures/public/` | Author-created exercisability cases. |
